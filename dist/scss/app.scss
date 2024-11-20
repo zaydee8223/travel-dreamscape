@@ -1,4 +1,60 @@
+//basic app styling 
+//reset 
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+html, body {
+ height: 100%
+}
+h1, h2, h3, h4, h5, h6, p {
+ margin-bottom: 16px
+}
+
+//app div - for entire sit
 #app {
     padding: 40px;
     background-color: red;
 }
+
+
+//fonts 
+
+//Noto Serif
+//Family: Regular
+@font-face {
+    font-family: NotoSerifRegular;
+    src: url(../fonts/Noto_Serif/static/NotoSerif-Regular.ttf);
+  }
+
+//Family: Medium
+@font-face {
+    font-family: NotoSerifMedium;
+    src: url(../fonts/Noto_Serif/static/NotoSerif-Medium.ttf);
+  }
+
+//Family: SemiBold
+@font-face {
+    font-family: NotoSerifSemiBold;
+    src: url(../fonts/Noto_Serif/static/NotoSerif-SemiBold.ttf);
+  }
+
+//Quicksand
+//Family: Regular
+@font-face {
+    font-family: QuicksandRegular;
+    src: url(../fonts/Quicksand/static/Quicksand-Regular.ttf);
+  }
+
+//Family: SemiBold
+@font-face {
+    font-family: QuicksandSemiBold;
+    src: url(../fonts/Quicksand/static/Quicksand-SemiBold.ttf);
+  }
+
+//Family: Bold
+@font-face {
+    font-family: QuicksandBold;
+    src: url(../fonts/Quicksand/static/Quicksand-Bold.ttf);
+  }
