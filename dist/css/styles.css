@@ -37,29 +37,50 @@ h1, h2, h3, h4, h5, h6, p {
   src: url(../fonts/Quicksand/static/Quicksand-Bold.ttf);
 }
 .home-hero {
+  position: relative;
   width: 100%;
   height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../images/travel-dreamscape-hero-holder.jpg");
+  overflow: hidden;
+}
+.home-hero .home-hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.home-hero .home-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }
 .home-hero h1 {
+  position: relative;
   color: #fff;
   font-size: 60px;
   padding-top: 100px;
   text-align: center;
   font-family: NotoSerifMedium;
+  z-index: 3;
 }
 .home-hero .home-slogan {
+  position: relative;
   color: #fff;
   font-size: 25px;
   text-align: center;
   margin-top: 50px;
   margin-bottom: 150px;
   font-family: NotoSerifRegular;
+  z-index: 3;
 }
 .home-hero .home-descrip {
+  position: relative;
   width: 770px;
   color: #fff;
   margin: 0 auto;
@@ -67,12 +88,15 @@ h1, h2, h3, h4, h5, h6, p {
   line-height: 1.3;
   text-align: center;
   font-family: QuicksandRegular;
+  z-index: 3;
 }
 .home-hero .home-signlog-btn {
+  position: relative;
   display: flex;
   margin-top: 160px;
   align-items: center;
   justify-content: center;
+  z-index: 3;
 }
 .home-hero .home-signlog-btn .home-start {
   border: none;

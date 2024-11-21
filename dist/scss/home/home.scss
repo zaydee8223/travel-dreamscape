@@ -1,35 +1,52 @@
-//home img - will change to a video eventually
 .home-hero {
+    position: relative;
     width: 100%;
     height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-    url('../../images/travel-dreamscape-hero-holder.jpg');
+    overflow: hidden; // Prevents scrollbars if the video exceeds the viewport
 
-    //app title
+    .home-hero-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; // Ensures the video fills the screen without distortion
+        z-index: 1;
+    }
+
+    .home-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); // Black overlay with transparency
+        z-index: 2; // Sits above the video but below content
+    }
+
     h1 {
+        position: relative;
         color: $white;
         font-size: 60px;
         padding-top: 100px;
         text-align: center;
         font-family: NotoSerifMedium;
+        z-index: 3; // Ensure text is above video and overlay
     }
 
-    //app slogan
     .home-slogan {
+        position: relative;
         color: $white;
         font-size: 25px;
         text-align: center;
         margin-top: 50px;
         margin-bottom: 150px;
         font-family: NotoSerifRegular;
+        z-index: 3;
     }
 
-    //app description
     .home-descrip {
+        position: relative;
         width: 770px;
         color: $white;
         margin: 0 auto;
@@ -37,36 +54,36 @@
         line-height: 1.3;
         text-align: center;
         font-family: QuicksandRegular;
+        z-index: 3;
     }
 
-    //app button - lead to sign up or log in
-    .home-signlog-btn{
+    .home-signlog-btn {
+        position: relative;
         display: flex;
         margin-top: 160px;
         align-items: center;
         justify-content: center;
-        
+        z-index: 3;
+
         .home-start {
             border: none;
             outline: none;
             width: 300px;
             padding: 10px 20px;
-            background-color: transparent; 
+            background-color: transparent;
             border-bottom: 2px solid $white;
-    
-            a{
+
+            a {
                 color: $white;
                 font-size: 18px;
                 font-family: QuicksandRegular;
                 text-decoration: none;
             }
         }
-    
-        //effect for when button is clicked
+
         .home-start:active {
             transform: translateY(2px);
             box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
         }
-
     }
 }
