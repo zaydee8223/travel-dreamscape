@@ -16,7 +16,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 
-//function - contains all content for the app
+//contains all content for the app
 export function getPageContent(pageID) {
     switch(pageID) {
         case "home":

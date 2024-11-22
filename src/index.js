@@ -1,6 +1,5 @@
 //import all funcs from model
 import * as MODEL from "./model";
-
 //import jquery
 import * as $ from 'jquery';
 
@@ -23,12 +22,10 @@ function route() {
     initListeners();
 }
 
-
 function initListeners() {
 }
 
 $(document).ready(() => {
-
     //set up listener to call the route func whenever hash in the url changes
     $(window).on("hashchange", route);
 
