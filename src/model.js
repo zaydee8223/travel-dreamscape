@@ -19,6 +19,7 @@ const db = getFirestore(app);
 //contains all content for the app
 export function getPageContent(pageID) {
     switch(pageID) {
+        //home
         case "home":
             return `<!-- hero content-->
 <div class="home-hero">
@@ -46,8 +47,71 @@ export function getPageContent(pageID) {
        </div>
    </div>`;
 
+   //login - signup 
    case "loginSignUp":
-    return `<h1>HELLO</H1>`;
+    return `   <!-- parent for forms -->
+      <div class="login-signup-parent">
+
+        <!-- login form --> 
+         <div class="login-parent">
+             <!-- form - log in -->
+              <div class="login-form" id="login">
+                 <!-- text to redirect to sign up -->
+             <p class="redirection">Don't have an account? <span>Sign Up</span></p>
+                <!-- form title -->
+                <p class="login-title">Log In</p>
+                <!-- email -->
+                <label for="logEmail">Email Address:</label>
+                <input type="email" id="logEmail" name="logEmail"/>
+
+                 <!-- password -->
+                 <label for="logPass">Password:</label>
+                 <input type="password" id="logPass" name="logPass"/>
+
+                 <!-- submit btn -->
+                  <div class="login-submit-btn">
+                    <a href="#dashboard"><button id="login-submit">Log In</button></a>
+                  </div>
+                 
+              </div>
+         </div>
+
+
+           <!-- signup form --> 
+           <div class="signup-parent">
+            <!-- form - log in -->
+             <div class="signup-form">
+               <!-- form title -->
+               <p class="signup-title">Sign In</p>
+               <!--  first name -->
+               <label for="fName">First Name:</label>
+               <input type="text" id="fName" name="fName"/>
+
+               <!-- last name -->
+               <label for="lName">Last Name:</label>
+               <input type="text" id="lName" name="lName"/>
+
+                <!-- email -->
+                <label for="signEmail">Email Address:</label>
+                <input type="email" id="signEmail" name="signEmail"/>
+
+                <!-- password -->
+                <label for="signPass">Password:</label>
+                <input type="password" id="signPass" name="signPass"/>
+
+                <!-- submit btn -->
+                 <div class="signup-submit-btn">
+                 <a href="#dashboard"><button id="signup-submit">Sign Up</button></a>
+                 </div>
+                   <!-- text to redirect to log in -->
+            <p class="redirection">Already have an account? <span>Log In</span></p>
+             </div>
+        </div>
+      </div>`;
+
+      //dashboard 
+      case "dashboard":
+        return `<h1>Hello</h1>`;
 
     default:
         return `<h1> 404 - Page Not Found</h1>`;

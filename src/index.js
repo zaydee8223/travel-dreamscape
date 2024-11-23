@@ -23,6 +23,29 @@ function route() {
 }
 
 function initListeners() {
+
+    //creating an acc
+    $("#signup-submit").on("click", (e) => {
+        //grab vals 
+        let fn = $("#fName").val();
+        let ln = $("#lName").val();
+        let sEm = $("#signEmail").val();
+        let sPw = $("#signPass").val();
+
+        //console the results 
+        console.log("User created Account: " , fn, ln, sEm, sPw);
+    });
+
+    //logged in
+    $("#login-submit").on("click", (e) => {
+        //grab vals 
+        let lEm = $("#logEmail").val();
+        let lPw = $("#logPass").val();
+
+        //console the results 
+        console.log("User Logged In: " , lEm, lPw);
+
+    });
 }
 
 $(document).ready(() => {
