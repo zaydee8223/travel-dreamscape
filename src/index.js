@@ -26,26 +26,50 @@ function initListeners() {
 
     //creating an acc
     $("#signup-submit").on("click", (e) => {
-        //grab vals 
+       
+        //prevent from default travel 
+        e.preventDefault(); 
+
+        //grab vals from input 
         let fn = $("#fName").val();
         let ln = $("#lName").val();
         let sEm = $("#signEmail").val();
         let sPw = $("#signPass").val();
 
-        //console the results 
-        console.log("User created Account: " , fn, ln, sEm, sPw);
+        //check to make sure all fields are filled
+        if (!fn || !ln || !sEm || !sPw) {
+            alert("All fields are required!");
+            return;
+        } 
+
+        //call the create acc func from model, takes in vals
+        MODEL.createAccount(fn, ln, sEm, sPw);
     });
 
     //logged in
     $("#login-submit").on("click", (e) => {
+         //prevent from default travel 
+         e.preventDefault(); 
+
         //grab vals 
         let lEm = $("#logEmail").val();
         let lPw = $("#logPass").val();
 
-        //console the results 
-        console.log("User Logged In: " , lEm, lPw);
+         //check to make sure all fields are filled
+         if (!lEm || !lPw) {
+            alert("All fields are required!");
+            return;
+        } 
 
+        //call the logged in func from model, taking in em and pw
+        MODEL.logUserIn(lEm, lPw);
+      
     });
+
+    //signed out
+    $("#signout-btn").on("click", ()=> {
+        MODEL.signUserOut();
+    })
 }
 
 $(document).ready(() => {

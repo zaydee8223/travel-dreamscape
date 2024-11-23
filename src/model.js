@@ -15,6 +15,17 @@ const auth = getAuth(app);
 
 const db = getFirestore(app);
 
+//on auth state changed func
+onAuthStateChanged(auth, (user) => {
+    //if there is a user 
+    if (user) {
+        console.log("logged in");
+
+        //if no user / logged out
+    } else {
+        console.log("logged out");
+    }
+});
 
 //contains all content for the app
 export function getPageContent(pageID) {
@@ -111,9 +122,66 @@ export function getPageContent(pageID) {
 
       //dashboard 
       case "dashboard":
-        return `<h1>Hello</h1>`;
+        return `<a href="#home"><button id="signout-btn">Sign Out</button></a>`;
 
     default:
         return `<h1> 404 - Page Not Found</h1>`;
     }
+}
+
+//create account function
+export function createAccount(fn, ln, sEm, sPw) {
+
+    // use createUserWithEmailAndPassword to create a new user
+    createUserWithEmailAndPassword(auth, sEm, sPw)
+        .then((userCredential) => {
+            //created a user
+            const user = userCredential.user;
+            //update the user's profile with their first and last name
+            updateProfile(user, {
+                displayName: `${fn} ${ln}`
+            }).then(() => {
+                console.log("Account created and profile updated:", user);
+                //navigate to appropriate page
+                window.location.hash = "#dashboard";
+            }).catch((profileError) => {
+                console.log("Error updating profile:", profileError.message);
+            });
+
+        })
+        .catch((error) => {
+            //any errors to creating acc
+            console.log("Error creating account:", error.message);
+        });
+}
+
+//logged in function
+export function logUserIn(lEm, lPw) {
+      //use signInWithEmailAndPassword to sign back in
+      signInWithEmailAndPassword(auth, lEm, lPw)
+      .then((userCredential) => {
+          //success log in
+          const user = userCredential.user;
+
+          //navigate to appropriate page
+          window.location.hash = "#dashboard";
+      })
+      .catch((error) => {
+          //handle login errors
+          console.error("Login error:", error.message);
+          alert("Login failed: " + error.message);
+      });
+
+}
+
+//signed out function
+export function signUserOut() {
+    signOut(auth)
+    .then(() => {
+      $(".profile .displayName").html("");
+      $(".profile .profileImage").html("");
+    })
+    .catch((error) =>{
+      console.log("error" , error.message);
+    });
 }
