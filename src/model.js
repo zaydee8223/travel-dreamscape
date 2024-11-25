@@ -1,6 +1,5 @@
 import * as $ from 'jquery';
 
-
 import { initializeApp } from "firebase/app";
 
 import { firebaseConfig } from "./firebaseConfig";
@@ -8,6 +7,7 @@ import { firebaseConfig } from "./firebaseConfig";
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword } from "firebase/auth";
 
 import { getFirestore, collection, addDoc, getDocs, onSnapshot } from 'firebase/firestore';
+
 
 const app = initializeApp(firebaseConfig);
 
@@ -93,7 +93,7 @@ export function getPageContent(pageID) {
             <!-- form - log in -->
              <div class="signup-form">
                <!-- form title -->
-               <p class="signup-title">Sign In</p>
+               <p class="signup-title">Sign Up</p>
                <!--  first name -->
                <label for="fName">First Name:</label>
                <input type="text" id="fName" name="fName"/>
@@ -142,8 +142,10 @@ export function createAccount(fn, ln, sEm, sPw) {
                 displayName: `${fn} ${ln}`
             }).then(() => {
                 console.log("Account created and profile updated:", user);
-                //navigate to appropriate page
-                window.location.hash = "#dashboard";
+               
+               //go to modal functionality 
+               showLoginSignupModal();
+
             }).catch((profileError) => {
                 console.log("Error updating profile:", profileError.message);
             });
@@ -162,15 +164,63 @@ export function logUserIn(lEm, lPw) {
       .then((userCredential) => {
           //success log in
           const user = userCredential.user;
+         
+          //go to modal functionality
+          showLoginSignupModal();
 
-          //navigate to appropriate page
-          window.location.hash = "#dashboard";
       })
       .catch((error) => {
           //handle login errors
           console.error("Login error:", error.message);
           alert("Login failed: " + error.message);
       });
+
+}
+
+//modal functionality - sign up and log in
+function showLoginSignupModal() {
+
+    //get the appropriate modal
+    const modal = $("#loginSignupModal");
+
+    //show the modal
+    modal.show();
+
+    //handle the proceed button
+    $("#proceed-btn").on("click", () => {
+       //hide the modal 
+        modal.hide();
+
+        //go to dashboard
+        window.location.hash = "#dashboard";
+    });
+
+    //handle the cancel button
+    $("#cancel-btn").on("click", () => {
+        //hide the login/signup modal
+        modal.hide();
+    
+        //show the logout modal
+        showLogoutModal();
+    });
+}
+
+//modal functionality - log out 
+export function showLogoutModal() {
+    //get the appropriate modal
+    const modal = $("#confirmLogoutModal");
+
+    //show the modal
+    modal.show();
+
+    //handle the okay button
+    $("#confirm-logout-btn").on("click", () => {
+        //hide modal
+        modal.hide();
+
+        //redirect to home
+        window.location.hash = "#home";
+    });
 
 }
 

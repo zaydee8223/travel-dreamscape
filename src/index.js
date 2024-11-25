@@ -13,9 +13,8 @@ function route() {
 
     //get content for current page id using model function
     const pageContent = MODEL.getPageContent(pageID);
-   // console.log("Page Content:", pageContent);
 
-   //replace content of app div with new page content
+    //replace content of app div with new page content
     $("#app").html(pageContent);
 
     //re init any event listeners for new content
@@ -42,7 +41,6 @@ function initListeners() {
             return;
         } 
 
-        //call the create acc func from model, takes in vals
         MODEL.createAccount(fn, ln, sEm, sPw);
     });
 
@@ -60,16 +58,16 @@ function initListeners() {
             alert("All fields are required!");
             return;
         } 
-
-        //call the logged in func from model, taking in em and pw
-        MODEL.logUserIn(lEm, lPw);
-      
+          MODEL.logUserIn(lEm, lPw);
     });
 
-    //signed out
-    $("#signout-btn").on("click", ()=> {
-        MODEL.signUserOut();
-    })
+    //signing out
+    $("#signout-btn").on("click", () => {
+        MODEL.signUserOut(() => {
+           //show modal
+           MODEL.showLogoutModal();
+        });
+    });
 }
 
 $(document).ready(() => {

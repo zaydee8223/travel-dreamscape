@@ -13,10 +13,66 @@
 </head>
 <body>
 
-    <div id="app">
-        <!-- all content will go in here -->
+       <!-- all content will go in here -->
+         <div id="app"></div>
 
+         <!-- custom modal alerts -->
+           <!-- confirm login and sign up modal -->
+             <div id="loginSignupModal" class="lsModal">
+            <div class="ls-cc-modal-content" id="login-modal-content">
+                <p class="modal-title">Travel Dreamscape</p>
+                <p class="modal-descrip">Welcome! You’re all set to explore your travel dreams! Your personal dashboard is just a click away, where your adventure planning begins. Ready to dive in?</p>
+                <div class="modal-buttons">
+                  <button id="proceed-btn">Proceed</button>
+                   <button id="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+          <!-- confirm deleting site or destination -->
+  <div id="confirmDeleteModal" class="lsModal">
+    <div class="ls-cc-modal-content" id="delete-confirm-modal-content">
+        <p class="modal-title">Travel Dreamscape</p>
+        <p class="modal-descrip">Are you sure you want to delete this? this action cannot be undone.</p>
+        <div class="modal-buttons">
+           <a href="#"><button id="confirm-delete-btn">Delete</button></a>
+           <a href="#"><button id="cancel-delete-btn">Cancel</button></a>
+        </div>
     </div>
+  </div>
+
+   <!-- confirm deleting main destination -->
+   <div id="deleteDesDoneModal" class="lsModal">
+    <div class="des-main-modal-content" id="delete-done-modal-content">
+        <p class="modal-title">Travel Dreamscape</p>
+        <p class="modal-descrip">Your destination has been deleted successfully.</p>
+        <div class="modal-buttons">
+           <a href="#"><button id="delete-ok-btn">Okay</button></a>
+        </div>
+    </div>
+  </div>
+
+    <!-- confirm deleting destination site -->
+    <div id="deleteSiteDoneModal" class="lsModal">
+        <div class="des-main-modal-content" id="delete-done-modal-content">
+            <p class="modal-title">Travel Dreamscape</p>
+            <p class="modal-descrip">Your destination site has been deleted successfully.</p>
+            <div class="modal-buttons">
+               <a href="#"><button id="delete-ok-btn">Okay</button></a>
+            </div>
+        </div>
+      </div>
+
+        <!-- confirm deleting destination site -->
+  <div id="confirmLogoutModal" class="lsModal">
+    <div class="logout-complete-modal-content" id="logout-done-modal-content">
+        <p class="modal-title">Travel Dreamscape</p>
+        <p class="modal-descrip">You have successfully logged out. The world is waiting for you—come back soon to plan your next adventure!</p>
+        <div class="modal-buttons">
+         <button id="confirm-logout-btn">Okay</button>
+        </div>
+    </div>
+  </div>
 
 
     <!-- link to script -->

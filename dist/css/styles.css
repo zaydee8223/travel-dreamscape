@@ -238,3 +238,166 @@ h1, h2, h3, h4, h5, h6, p {
   font-family: QuicksandRegular;
   background-color: #C5948F;
 }
+
+#loginSignupModal, #confirmDeleteModal, #deleteDesDoneModal, #deleteSiteDoneModal, #confirmLogoutModal {
+  display: none;
+}
+
+.lsModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.lsModal .ls-cc-modal-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 700px;
+  height: 500px;
+  transform: translate(-50%, -50%);
+  background-color: #FFE2C2;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.lsModal .ls-cc-modal-content .modal-title {
+  font-size: 48px;
+  text-align: center;
+  color: #000;
+  font-family: NotoSerifSemiBold;
+}
+.lsModal .ls-cc-modal-content .modal-descrip {
+  width: 500px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  text-align: center;
+  margin: 0 auto;
+  font-family: QuicksandRegular;
+  font-size: 18px;
+  color: #000;
+}
+.lsModal .ls-cc-modal-content .modal-buttons {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.lsModal .ls-cc-modal-content .modal-buttons #proceed-btn, .lsModal .ls-cc-modal-content .modal-buttons #cancel-delete-btn {
+  cursor: pointer;
+  font-size: 18px;
+  font-family: QuicksandRegular;
+  color: #5F6343;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  width: 200px;
+  background-color: transparent;
+  border-bottom: 2px solid #5F6343;
+}
+.lsModal .ls-cc-modal-content .modal-buttons #cancel-btn, .lsModal .ls-cc-modal-content .modal-buttons #confirm-delete-btn {
+  cursor: pointer;
+  font-size: 18px;
+  font-family: QuicksandRegular;
+  color: #5B260E;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  width: 200px;
+  background-color: transparent;
+  border-bottom: 2px solid #5B260E;
+}
+.lsModal .des-main-modal-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 700px;
+  height: 500px;
+  transform: translate(-50%, -50%);
+  background-color: #78402F;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.lsModal .des-main-modal-content .modal-title {
+  font-size: 48px;
+  text-align: center;
+  color: #fff;
+  font-family: NotoSerifSemiBold;
+}
+.lsModal .des-main-modal-content .modal-descrip {
+  width: 500px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  text-align: center;
+  margin: 0 auto;
+  font-family: QuicksandRegular;
+  font-size: 18px;
+  color: #fff;
+}
+.lsModal .des-main-modal-content .modal-buttons {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.lsModal .des-main-modal-content .modal-buttons #delete-ok-btn {
+  cursor: pointer;
+  font-size: 18px;
+  font-family: QuicksandRegular;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  width: 200px;
+  background-color: transparent;
+  border-bottom: 2px solid #fff;
+}
+.lsModal .logout-complete-modal-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 700px;
+  height: 500px;
+  transform: translate(-50%, -50%);
+  background-color: #7988A7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.lsModal .logout-complete-modal-content .modal-title {
+  font-size: 48px;
+  text-align: center;
+  color: #fff;
+  font-family: NotoSerifSemiBold;
+}
+.lsModal .logout-complete-modal-content .modal-descrip {
+  width: 500px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  text-align: center;
+  margin: 0 auto;
+  font-family: QuicksandRegular;
+  font-size: 18px;
+  color: #fff;
+}
+.lsModal .logout-complete-modal-content .modal-buttons {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.lsModal .logout-complete-modal-content .modal-buttons #confirm-logout-btn {
+  cursor: pointer;
+  font-size: 18px;
+  font-family: QuicksandRegular;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  width: 200px;
+  background-color: transparent;
+  border-bottom: 2px solid #fff;
+}
