@@ -1,12 +1,16 @@
-//default / all pages will contain: 
+//default / all - most pages will contain: 
 @import "app.scss";
 @import "site-colors.scss";
 
+@import "nav.scss";
 //home 
 @import"./home/home.scss";
 
 //log in / sign up 
 @import "./login-signup/login-signup.scss";
+
+//dashboard 
+@import "./dashboard/dashboard.scss";
 
 //modals 
 @import "modals.scss";

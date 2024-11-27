@@ -1,0 +1,126 @@
+//header text 
+.dash-headers{
+    padding-left: 100px;
+
+    //title - w user name
+.dash-users-trips {
+    font-size: 30px;
+    color: $black;
+    font-family: NotoSerifMedium;
+}
+
+//stats of trip message 
+.dash-user-trip-stat {
+    font-size: 16px;
+    color: $black;
+    margin-top: 50px;
+    font-family: QuicksandRegular;
+}
+}
+//all destinations
+.dash-main-des{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 220px;
+    justify-content: center;
+    margin-top: 60px;
+    
+//add destination button
+.dash-add-des{
+    width: 320px;
+    height: 460px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid $dashboard-add-dest-btn;
+
+    //icon in button
+  i {
+    font-size: 50px;
+    margin-top: 50px;
+    color: $dashboard-add-dest-btn;
+    }
+}
+
+    //box for one destination
+    .dash-main-des-box{
+        width: 320px;
+        height: 460px;
+        border-radius: 23px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+       
+        //image
+        .dash-main-des-img {
+            width: 320px;
+            height: 200px;
+            object-fit: cover;
+            }
+        
+
+        //title of destination
+        .dash-main-des-title{
+            font-family: NotoSerifRegular;
+            font-size: 20px;
+            margin-top: 20px;
+            text-align: center;
+
+        }
+
+        //description of destination
+        .dash-main-des-descrip{
+            font-family: QuicksandRegular;
+            font-size: 14px;
+            text-align: center;
+            width: 310px;
+        }
+
+        //dates box
+        .dash-main-des-date-box{
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            margin-top: 30px;
+            font-family: QuicksandRegular;
+            justify-content: space-evenly;
+        }
+
+        //options for main destination
+        .dash-main-des-option-box{
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            font-family: QuicksandRegular;
+            justify-content: space-evenly;
+            border: none;
+            cursor: pointer;
+            margin-top: 30px;
+            background-color: $white;
+
+                //view btn
+                #view-main-des-btn{
+                    border: none;
+                    background-color: $white;
+                    color: $view-procceed-btn;
+
+                }
+
+                //edit btn
+                #edit-main-des-btn { 
+                    border: none;
+                    background-color: $white;
+                    color: $edit-destination-and-site;
+                   
+                }
+                //delete btn
+                #delete-main-des-btn {
+                    border: none;
+                    background-color: $white;
+                    color: $delete-cancel-btn;
+                }
+
+            }
+        }
+    }

@@ -21,6 +21,15 @@ onAuthStateChanged(auth, (user) => {
     if (user) {
         console.log("logged in");
 
+        //fetch their displayname
+        const fullName = user.displayName;
+
+        //grab only the first name 
+        const firstName = fullName.split(" ")[0];
+
+        //update the dashboard with the users name
+        updateDashboard(firstName);
+
         //if no user / logged out
     } else {
         console.log("logged out");
@@ -122,8 +131,63 @@ export function getPageContent(pageID) {
 
       //dashboard 
       case "dashboard":
-        return `<a href="#home"><button id="signout-btn">Sign Out</button></a>`;
+        return `  <!-- navigation - only on logged in pages -->
+          <nav class="logged-in-nav">
+            <div class="logo"></div>
 
+            <div class="links">
+              <a href="#dashboard">Dashboard</a>
+              <a href="#" id="signout-btn">Log Out</a>
+            </div>
+          </nav>
+          <!-- display user's name w trips -->
+           <div class="dash-headers">
+            <h1 class="dash-users-trips">Trips</h1>
+            <p class="dash-user-trip-stat">You haven't added any trips yet! Start your adventure by adding your dream destinations.</p>
+           </div>
+
+           <!-- every destination and button -->
+           <div class="dash-main-des">
+           <!-- add destination btn -->
+            <div class="dash-add-des" id="dashboard-add-des-btn">
+              <i class="fa-solid fa-plus"></i>
+            </div>
+
+            <!-- box for main destination -->
+             <div class="dash-main-des-box">
+               <img src="./images/mexico-thumb.jpg" id="" class="dash-main-des-img">
+              
+               <!-- title of destination -->
+                <p class="dash-main-des-title">Mexico</p>
+                <!-- small description of destination -->
+                 <p class="dash-main-des-descrip">Can't wait to explore the beautiful beaches, indulge in authentic tacos, and visit ancient ruins! The vibrant culture and friendly locals make it a must-visit destination!</p>
+                 <!-- dates box -->
+                  <div class="dash-main-des-date-box">
+                    <!-- arrival date -->
+                     <p class="dash-main-des-arrive">12 - 20 - 2024 </p> 
+                     <p class="dash-main-des-line"> |</p>
+                     <!-- departure date -->
+                      <p class="dash-main-des-depart">01 - 05 - 2025</p>
+                  </div>
+
+                  <!-- options for main destination -->
+                   <div class="dash-main-des-option-box">
+                    <!-- view btn -->
+                     <button class="dash-main-des-option-btn" id="view-main-des-btn">View</button>
+
+                      <!-- edit btn -->
+                      <button class="dash-main-des-option-btn" id="edit-main-des-btn">Edit</button>
+
+                       <!-- view btn -->
+                     <button class="dash-main-des-option-btn" id="delete-main-des-btn">Delete</button>
+                   </div>
+             </div>
+             
+         </div>`;
+
+         //add destination
+         case "addDestination":
+            return `<h1>Hello</h1>`;
     default:
         return `<h1> 404 - Page Not Found</h1>`;
     }
@@ -234,4 +298,13 @@ export function signUserOut() {
     .catch((error) =>{
       console.log("error" , error.message);
     });
+}
+
+//update the dashboard page with the users name 
+function updateDashboard(userName){
+    //check if a user is logged in
+    if(userName) {
+        //select the header from the dashboard name and update w their name
+        $(".dash-users-trips").html(`${userName}'s Trips:`);
+    }
 }

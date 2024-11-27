@@ -1,0 +1,27 @@
+nav {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+        width: 93px;
+        height: 116px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url(../images/travel-dreamscape-icon.png);
+    }
+
+    .links {
+        a {
+    color: $black;
+    font-size: 18px;
+    margin-right: 50px;
+    text-decoration: none;
+    font-family: QuicksandRegular;
+}
+
+    }
+}

@@ -36,6 +36,29 @@ h1, h2, h3, h4, h5, h6, p {
   font-family: QuicksandBold;
   src: url(../fonts/Quicksand/static/Quicksand-Bold.ttf);
 }
+nav {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .logo {
+  width: 93px;
+  height: 116px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../images/travel-dreamscape-icon.png);
+}
+nav .links a {
+  color: #000;
+  font-size: 18px;
+  margin-right: 50px;
+  text-decoration: none;
+  font-family: QuicksandRegular;
+}
+
 .home-hero {
   width: 100%;
   height: 100vh;
@@ -237,6 +260,102 @@ h1, h2, h3, h4, h5, h6, p {
   color: #fff;
   font-family: QuicksandRegular;
   background-color: #C5948F;
+}
+
+.dash-headers {
+  padding-left: 100px;
+}
+.dash-headers .dash-users-trips {
+  font-size: 30px;
+  color: #000;
+  font-family: NotoSerifMedium;
+}
+.dash-headers .dash-user-trip-stat {
+  font-size: 16px;
+  color: #000;
+  margin-top: 50px;
+  font-family: QuicksandRegular;
+}
+
+.dash-main-des {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 220px;
+  justify-content: center;
+  margin-top: 60px;
+}
+.dash-main-des .dash-add-des {
+  width: 320px;
+  height: 460px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid #523E25;
+}
+.dash-main-des .dash-add-des i {
+  font-size: 50px;
+  margin-top: 50px;
+  color: #523E25;
+}
+.dash-main-des .dash-main-des-box {
+  width: 320px;
+  height: 460px;
+  border-radius: 23px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.dash-main-des .dash-main-des-box .dash-main-des-img {
+  width: 320px;
+  height: 200px;
+  object-fit: cover;
+}
+.dash-main-des .dash-main-des-box .dash-main-des-title {
+  font-family: NotoSerifRegular;
+  font-size: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+.dash-main-des .dash-main-des-box .dash-main-des-descrip {
+  font-family: QuicksandRegular;
+  font-size: 14px;
+  text-align: center;
+  width: 310px;
+}
+.dash-main-des .dash-main-des-box .dash-main-des-date-box {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  margin-top: 30px;
+  font-family: QuicksandRegular;
+  justify-content: space-evenly;
+}
+.dash-main-des .dash-main-des-box .dash-main-des-option-box {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-family: QuicksandRegular;
+  justify-content: space-evenly;
+  border: none;
+  cursor: pointer;
+  margin-top: 30px;
+  background-color: #fff;
+}
+.dash-main-des .dash-main-des-box .dash-main-des-option-box #view-main-des-btn {
+  border: none;
+  background-color: #fff;
+  color: #5F6343;
+}
+.dash-main-des .dash-main-des-box .dash-main-des-option-box #edit-main-des-btn {
+  border: none;
+  background-color: #fff;
+  color: #b29d85;
+}
+.dash-main-des .dash-main-des-box .dash-main-des-option-box #delete-main-des-btn {
+  border: none;
+  background-color: #fff;
+  color: #5B260E;
 }
 
 #loginSignupModal, #confirmDeleteModal, #deleteDesDoneModal, #deleteSiteDoneModal, #confirmLogoutModal {

@@ -61,13 +61,19 @@ function initListeners() {
           MODEL.logUserIn(lEm, lPw);
     });
 
-    //signing out
-    $("#signout-btn").on("click", () => {
-        MODEL.signUserOut(() => {
-           //show modal
-           MODEL.showLogoutModal();
-        });
+   //signing out
+   $("#signout-btn").on("click", () => {
+    MODEL.signUserOut(() => {
+      //show modal
+      MODEL.showLogoutModal();
     });
+});
+
+//clicking add destination
+$("#dashboard-add-des-btn").on("click", () => {
+      //go to dashboard
+      window.location.hash = "#addDestination";
+});
 }
 
 $(document).ready(() => {
