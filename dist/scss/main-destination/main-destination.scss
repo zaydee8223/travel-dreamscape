@@ -1,0 +1,57 @@
+//main destination hero image
+.main-des-hero{
+    width: 850px;
+    height: 500px;
+    margin: 20px auto 30px auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+        url('../../images/mexico-thumb.jpg');
+
+        //content inside of the hero image
+        .main-des-content{
+            
+            //title of the destination
+            .main-des-name-title{
+                color: $white;
+                font-size: 35px;
+                padding-top: 40px;
+                text-align: center;
+                font-family: NotoSerifMedium;
+            }
+
+            //description of the destination
+            .main-des-descrip{
+                width: 500px;
+                color: $white;
+                font-size: 18px;
+                text-align: center;
+                margin: 60px auto 0 auto;
+                font-family: QuicksandRegular;
+            }
+
+            //dates of travel 
+            .main-des-dates{
+                display: flex;
+                align-items:flex-end;
+                font-size: 13px;
+                margin-top: 180px;
+                color: $white;
+                justify-content: space-evenly;
+                font-family: QuicksandRegular;
+                
+            }
+        }
+}
+
+//itinerary section
+//title of the section
+.main-des-itin{
+    width: 495px;
+    color: $black;
+    font-size: 22px;
+    margin-left: 200px;
+    font-family: NotoSerifMedium;
+}

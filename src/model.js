@@ -15,6 +15,8 @@ const auth = getAuth(app);
 
 const db = getFirestore(app);
 
+var appFirstName = "";
+
 //on auth state changed func
 onAuthStateChanged(auth, (user) => {
     //if there is a user 
@@ -27,12 +29,15 @@ onAuthStateChanged(auth, (user) => {
         //grab only the first name 
         const firstName = fullName.split(" ")[0];
 
-        //update the dashboard with the users name
-        updateDashboard(firstName);
+        //the app first name is going to be the first name 
+        appFirstName = firstName;
 
         //if no user / logged out
     } else {
         console.log("logged out");
+
+        //clear the value of the user name
+        appFirstName = "";
     }
 });
 
@@ -142,7 +147,7 @@ export function getPageContent(pageID) {
           </nav>
           <!-- display user's name w trips -->
            <div class="dash-headers">
-            <h1 class="dash-users-trips">Trips</h1>
+            <h1 class="dash-users-trips">${appFirstName}'s Trips</h1>
             <p class="dash-user-trip-stat">You haven't added any trips yet! Start your adventure by adding your dream destinations.</p>
            </div>
 
@@ -282,6 +287,77 @@ export function getPageContent(pageID) {
                   <button id="add-des-site-btn">Add Destination Site</button>
                 </div>
           </div>`;
+
+          //main destination view 
+          case "mainDestination":
+            return `     <!-- navigation - only on logged in pages -->
+         <nav class="logged-in-nav">
+          <div class="logo"></div>
+
+          <div class="links">
+            <a href="#dashboard">Dashboard</a>
+            <a href="#" id="signout-btn">Log Out</a>
+          </div>
+        </nav>
+
+        <!-- big hero image - main des image -->
+         <div class="main-des-hero">
+          <!-- text content inside of hero -->
+           <div class="main-des-content">
+            <!-- title of destination -->
+             <p class="main-des-name-title">Welcome to Mexico!</p>
+             <!-- description of destination -->
+              <p class="main-des-descrip">Can't wait to explore the beautiful beaches, indulge in authentic tacos, and visit ancient ruins! The vibrant culture and friendly locals make it a must-visit destination! Can't wait to explore the beautiful beaches, indulge in authentic tacos, and visit ancient ruins! The vibrant culture and friendly locals make it a must-visit destination!</p>
+              <!-- dates of travel -->
+               <div class="main-des-dates">
+                <!-- arrival date  -->
+                 <p class="main-des-arr-date">12 - 20 - 2024</p>
+                 <!-- line -->
+                  <p class="line"> | </p>
+                  <!-- departure date -->
+                   <p class="main-des-dep-ate">01 - 05 - 2025</p>
+               </div>
+           </div>
+         </div>
+
+         <!-- itinerary section -->
+          <p class="main-des-itin">Your (Destination Name) Itinerary:</p>
+          <!-- status of itinerary text -->
+           <p class="main-des-itin-stat">No places added yet! Start planning your stops!</p>
+           <!-- holder for buttons - add sites and added sites -->
+            <div class="main-des-stops">
+              <!-- add a site btn -->
+               <div class="main-add-des-stop-btn">
+                <button id="main-add-site">Add Site</button>
+               </div>
+               <!-- sites added -->
+                <div class="main-des-site-box">
+                  <!-- name of site -->
+                   <p class="main-des-site-title">Veracruz</p>
+                   <!-- buttons with options to view edit delete -->
+                    <div class="main-des-site-opt-box">
+                      <!-- button - add -->
+                       <button id="main-des-site-view">View</button>
+
+                       <!-- button - edit -->
+                        <button id="main-des-site-edit">Edit</button>
+
+                        <!-- button - delete -->
+                         <button id="main-des-site-delete">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- destination site modal -->
+<div id="site-details-modal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2 id="modal-site-title">Veracruz</h2>
+    <img id="modal-site-image" src="./images/veracruz.jpeg" alt="Veracruz Image" class="modal-image" />
+    <p id="modal-site-description">
+Veracruz is a vibrant coastal city full of history, culture, and stunning beaches. From exploring the historic Fort of San Juan de Ulúa to savoring fresh seafood by the waterfront, it's the perfect blend of adventure and relaxation.</p>
+  </div>
+</div>`;
     default:
         return `<h1> 404 - Page Not Found</h1>`;
     }
@@ -392,13 +468,4 @@ export function signUserOut() {
     .catch((error) =>{
       console.log("error" , error.message);
     });
-}
-
-//update the dashboard page with the users name 
-function updateDashboard(userName){
-    //check if a user is logged in
-    if(userName) {
-        //select the header from the dashboard name and update w their name
-        $(".dash-users-trips").html(`${userName}'s Trips:`);
-    }
 }

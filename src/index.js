@@ -74,6 +74,31 @@ $("#dashboard-add-des-btn").on("click", () => {
       //go to dashboard
       window.location.hash = "#addDestination";
 });
+
+//clicking add destination site
+$("#main-add-site").on("click", () => {
+    //go to dashboard
+    window.location.hash = "#addDestinationSite";
+});
+
+//clicking view on main destination
+$("#view-main-des-btn").on("click", () => {
+
+    //go to main dashboard page
+    window.location.hash = "#mainDestination";
+});
+
+//clicking view on main destination site 
+$("#main-des-site-view").on("click", () => {
+    //show modal with fade effect
+    $("#site-details-modal").fadeIn();
+  });
+
+  //close the main destination site modal when the "X" button is clicked
+  $(".close-btn").on("click", () => {
+    //hide modal with fade effect
+    $("#site-details-modal").fadeOut();
+  });
 }
 
 $(document).ready(() => {

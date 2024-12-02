@@ -1,0 +1,92 @@
+//stat of intienerary text
+.main-des-itin-stat{
+    width: 557px;
+    color: $black;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 200px;
+    font-family: QuicksandRegular;
+}
+
+//holder for all btns in itinerary
+.main-des-stops{
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+
+    //add a site button
+    .main-add-des-stop-btn{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 220px;
+        justify-content: center;
+        
+        //add site btn
+        #main-add-site{
+            width: 183px;
+            height: 60px;
+            margin-top: 30px;
+            //margin-left: 200px;
+            margin-bottom: 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 10px;
+            color: $white;
+            font-family: QuicksandRegular;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: $main-destination-add-site;
+        }
+    }
+
+    //sites added 
+    .main-des-site-box{
+        width: 183px;
+        height: 60px;
+        background-color: $white;
+        border-radius: 10px;
+        border: 2px solid $black;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+
+        //name of site
+        .main-des-site-title{
+            font-size: 18px;
+            color: $black;
+            text-align: center;
+            font-family: NotoSerifRegular;
+        }
+
+        //buttons with options
+        .main-des-site-opt-box{
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            font-family: QuicksandRegular;
+            justify-content: space-evenly;
+
+            //view button
+            #main-des-site-view{
+                border: none;
+                cursor: pointer;
+                background-color: transparent;
+                color: $view-procceed-btn;
+            }
+            //edit button
+            #main-des-site-edit{
+                border: none;
+                cursor: pointer;
+                background-color: transparent;
+                color: $edit-btn;
+            }
+
+            //delete button
+            #main-des-site-delete{
+                border: none;
+                cursor: pointer;
+                background-color: transparent;
+                color: $delete-cancel-btn;
+            }
+        }
+    }
+}

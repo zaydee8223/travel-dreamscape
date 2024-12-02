@@ -699,3 +699,166 @@ nav .links a {
   font-family: QuicksandRegular;
   background-color: #C3C5B9;
 }
+
+.main-des-hero {
+  width: 850px;
+  height: 500px;
+  margin: 20px auto 30px auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../images/mexico-thumb.jpg");
+}
+.main-des-hero .main-des-content .main-des-name-title {
+  color: #fff;
+  font-size: 35px;
+  padding-top: 40px;
+  text-align: center;
+  font-family: NotoSerifMedium;
+}
+.main-des-hero .main-des-content .main-des-descrip {
+  width: 500px;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  margin: 60px auto 0 auto;
+  font-family: QuicksandRegular;
+}
+.main-des-hero .main-des-content .main-des-dates {
+  display: flex;
+  align-items: flex-end;
+  font-size: 13px;
+  margin-top: 180px;
+  color: #fff;
+  justify-content: space-evenly;
+  font-family: QuicksandRegular;
+}
+
+.main-des-itin {
+  width: 495px;
+  color: #000;
+  font-size: 22px;
+  margin-left: 200px;
+  font-family: NotoSerifMedium;
+}
+
+.main-des-itin-stat {
+  width: 557px;
+  color: #000;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-left: 200px;
+  font-family: QuicksandRegular;
+}
+
+.main-des-stops {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.main-des-stops .main-add-des-stop-btn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 220px;
+  justify-content: center;
+}
+.main-des-stops .main-add-des-stop-btn #main-add-site {
+  width: 183px;
+  height: 60px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
+  color: #fff;
+  font-family: QuicksandRegular;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #7988A7;
+}
+.main-des-stops .main-des-site-box {
+  width: 183px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 2px solid #000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.main-des-stops .main-des-site-box .main-des-site-title {
+  font-size: 18px;
+  color: #000;
+  text-align: center;
+  font-family: NotoSerifRegular;
+}
+.main-des-stops .main-des-site-box .main-des-site-opt-box {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-family: QuicksandRegular;
+  justify-content: space-evenly;
+}
+.main-des-stops .main-des-site-box .main-des-site-opt-box #main-des-site-view {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: #5F6343;
+}
+.main-des-stops .main-des-site-box .main-des-site-opt-box #main-des-site-edit {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: #B58249;
+}
+.main-des-stops .main-des-site-box .main-des-site-opt-box #main-des-site-delete {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: #5B260E;
+}
+
+/* Modal styling */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  background: rgb(255, 255, 255);
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  z-index: 1000;
+  /* Content inside the modal */
+}
+.modal .modal-content {
+  padding: 20px;
+  text-align: center;
+}
+.modal .modal-content #modal-site-title {
+  font-size: 30px;
+  margin-top: 40px;
+  font-family: NotoSerifMedium;
+}
+.modal .modal-content #modal-site-description {
+  width: 500px;
+  font-size: 18px;
+  color: #000;
+  text-align: center;
+  margin: 50px auto 0 auto;
+  font-family: QuicksandRegular;
+}
+.modal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px; /* Move it inside the modal on the left */
+  font-size: 40px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
+.modal .modal-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px 0;
+}

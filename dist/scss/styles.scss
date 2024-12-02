@@ -20,3 +20,10 @@
 
 //add a destination site
 @import "./add-des-site/add-des-site.scss";
+
+//main destination pages
+@import "./main-destination/main-destination.scss";
+@import "./main-destination/main-destination-sites.scss";
+
+//destination site view
+@import "./destination-site/destination-site.scss";
