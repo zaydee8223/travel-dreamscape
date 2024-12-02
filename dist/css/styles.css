@@ -239,6 +239,7 @@ nav .links a {
   font-size: 16px;
   padding: 10px 20px;
   margin-bottom: 45px;
+  font-family: QuicksandRegular;
   background-color: transparent;
   border-bottom: 2px solid #000;
 }
@@ -310,6 +311,7 @@ nav .links a {
   width: 320px;
   height: 200px;
   object-fit: cover;
+  border-radius: 25px 25px 0 0;
 }
 .dash-main-des .dash-main-des-box .dash-main-des-title {
   font-family: NotoSerifRegular;
@@ -338,22 +340,24 @@ nav .links a {
   font-family: QuicksandRegular;
   justify-content: space-evenly;
   border: none;
-  cursor: pointer;
   margin-top: 30px;
   background-color: #fff;
 }
 .dash-main-des .dash-main-des-box .dash-main-des-option-box #view-main-des-btn {
   border: none;
+  cursor: pointer;
   background-color: #fff;
   color: #5F6343;
 }
 .dash-main-des .dash-main-des-box .dash-main-des-option-box #edit-main-des-btn {
   border: none;
+  cursor: pointer;
   background-color: #fff;
   color: #b29d85;
 }
 .dash-main-des .dash-main-des-box .dash-main-des-option-box #delete-main-des-btn {
   border: none;
+  cursor: pointer;
   background-color: #fff;
   color: #5B260E;
 }
@@ -519,4 +523,179 @@ nav .links a {
   width: 200px;
   background-color: transparent;
   border-bottom: 2px solid #fff;
+}
+
+.add-destination-parent {
+  width: 1100px;
+  height: 650px;
+  padding: 50px;
+  margin: 40px auto 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #F3F6F7;
+}
+.add-destination-parent .add-destination-title {
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: NotoSerifMedium;
+}
+.add-destination-parent .add-destination-descrip {
+  width: 545px;
+  color: #000;
+  font-size: 18px;
+  text-align: center;
+  margin: 0 auto;
+  font-family: QuicksandRegular;
+}
+.add-destination-parent .add-destination-form-parent {
+  margin-top: 30px;
+}
+.add-destination-parent .add-destination-form-parent .add-destination-form-side-parent {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.add-destination-parent .add-destination-form-parent .add-destination-form-side-parent .add-destination-inputs label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-family: QuicksandBold;
+}
+.add-destination-parent .add-destination-form-parent .add-destination-form-side-parent .add-destination-inputs input {
+  width: 269px;
+  border: none;
+  outline: none;
+  display: block;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-bottom: 45px;
+  font-family: QuicksandRegular;
+  background-color: transparent;
+  border-bottom: 2px solid #000;
+}
+.add-destination-parent .add-destination-form-parent .add-destination-form-side-parent .add-destination-inputs input[type=file]::file-selector-button {
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  height: 30px;
+  cursor: pointer;
+  font-family: QuicksandRegular;
+  background-color: #C3C5B9;
+}
+.add-destination-parent .add-destination-form-parent .add-destination-form-side-parent .add-destination-inputs input[type=file]::file-selector-button:hover {
+  background-color: #9d9f94;
+}
+.add-destination-parent .add-destination-form-parent .add-destination-form-side-parent .add-destination-inputs textarea {
+  width: 269px;
+  height: 150px;
+  display: block;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-bottom: 45px;
+  font-family: QuicksandRegular;
+  background-color: transparent;
+  border: 2px solid #000;
+}
+.add-destination-parent .add-destination-form-parent .add-submit-btn {
+  width: 370px;
+  margin: 0 auto;
+}
+.add-destination-parent .add-destination-form-parent .add-submit-btn #add-destination-btn {
+  width: 370px;
+  height: 50px;
+  border: none;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-family: QuicksandRegular;
+  background-color: #C3C5B9;
+}
+
+.add-des-site-parent {
+  width: 1100px;
+  height: 700px;
+  padding: 50px;
+  margin: 40px auto 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #F3F6F7;
+}
+.add-des-site-parent .add-des-site-title {
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: NotoSerifMedium;
+}
+.add-des-site-parent .add-des-site-descrip {
+  width: 545px;
+  color: #000;
+  font-size: 18px;
+  text-align: center;
+  margin: 0 auto;
+  font-family: QuicksandRegular;
+}
+.add-des-site-parent .add-des-site-form-parent {
+  margin-top: 30px;
+  width: 250px;
+  margin: 20px auto 0 auto;
+}
+.add-des-site-parent .add-des-site-form-parent .add-des-site-inputs label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-family: QuicksandBold;
+}
+.add-des-site-parent .add-des-site-form-parent .add-des-site-inputs input {
+  width: 269px;
+  border: none;
+  outline: none;
+  display: block;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-bottom: 45px;
+  font-family: QuicksandRegular;
+  background-color: transparent;
+  border-bottom: 2px solid #000;
+}
+.add-des-site-parent .add-des-site-form-parent .add-des-site-inputs input[type=file]::file-selector-button {
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  height: 30px;
+  cursor: pointer;
+  font-family: QuicksandRegular;
+  background-color: #C3C5B9;
+}
+.add-des-site-parent .add-des-site-form-parent .add-des-site-inputs input[type=file]::file-selector-button:hover {
+  background-color: #9d9f94;
+}
+.add-des-site-parent .add-des-site-form-parent .add-des-site-inputs textarea {
+  width: 269px;
+  height: 100px;
+  display: block;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-bottom: 45px;
+  font-family: QuicksandRegular;
+  background-color: transparent;
+  border: 2px solid #000;
+}
+.add-des-site-parent .add-submit-btn {
+  width: 350px;
+  margin: 0 auto;
+}
+.add-des-site-parent .add-submit-btn #add-des-site-btn {
+  width: 370px;
+  height: 50px;
+  border: none;
+  margin: 10px auto 0 auto;
+  font-size: 16px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-family: QuicksandRegular;
+  background-color: #C3C5B9;
 }

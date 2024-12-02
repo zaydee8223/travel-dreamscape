@@ -1,0 +1,112 @@
+//parent for content
+.add-des-site-parent{
+    width: 1100px;
+    height: 700px;
+    padding: 50px;
+    margin: 40px auto 0 auto;
+    box-shadow: 0 4px 8px rgba($black, $alpha: 0.2);
+    background-color: $add-destination-and-site-bg;
+
+    //title of page
+    .add-des-site-title {
+        color: $black;
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 30px;
+        font-family: NotoSerifMedium;
+    }
+
+    //description text
+    .add-des-site-descrip{
+        width: 545px;
+        color: $black;
+        font-size: 18px;
+        text-align: center;
+        margin: 0 auto;
+        font-family: QuicksandRegular;
+    }
+
+    //form holder parent
+    .add-des-site-form-parent{
+        margin-top: 30px;
+        width: 250px;
+        margin: 20px auto 0 auto;
+
+        //input parent
+        .add-des-site-inputs{
+
+            //labels
+            label {
+                display: block;
+                font-size: 18px;
+                margin-bottom: 10px;
+                font-family: QuicksandBold;
+            }
+
+            //inputs
+            input{
+               width: 269px;
+               border: none;
+               outline: none;
+               display: block;
+               font-size: 16px;
+               padding: 10px 20px;
+               margin-bottom: 45px;
+               font-family: QuicksandRegular;
+               background-color: transparent;
+               border-bottom: 2px solid $black; 
+            }
+
+            //input file 
+            input[type=file]::file-selector-button{
+                border:none;
+                border-radius: 10px;
+                color: $white;
+                height: 30px;
+                cursor: pointer;
+                font-family: QuicksandRegular;
+                background-color: $add-destination-and-site;
+            }
+
+              //small effect for file btn
+              input[type=file]::file-selector-button:hover {
+                background-color: #9d9f94;
+              }
+
+            //textarea
+            textarea{
+                width: 269px;
+                height: 100px;
+                display: block;
+                font-size: 16px;
+                padding: 10px 20px;
+                margin-bottom: 45px;
+                font-family: QuicksandRegular;
+                background-color: transparent;
+                border: 2px solid $black;
+            }
+           
+        }
+    }
+
+
+         //button
+         .add-submit-btn{
+            width: 350px;
+            margin: 0 auto;
+
+            #add-des-site-btn{
+                width: 370px;
+                height: 50px;
+                border: none;
+                margin: 10px auto 0 auto;
+                font-size: 16px;
+                border-radius: 10px;
+                color: $white;
+                cursor: pointer;
+                font-family: QuicksandRegular;
+                background-color:$add-destination-and-site;
+
+            }
+        }
+}

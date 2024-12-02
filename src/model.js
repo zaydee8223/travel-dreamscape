@@ -187,7 +187,101 @@ export function getPageContent(pageID) {
 
          //add destination
          case "addDestination":
-            return `<h1>Hello</h1>`;
+            return ` <!-- navigation - only on logged in pages -->
+           <nav class="logged-in-nav">
+            <div class="logo"></div>
+
+            <div class="links">
+              <a href="#dashboard">Dashboard</a>
+              <a href="#" id="signout-btn">Log Out</a>
+            </div>
+          </nav>
+
+          <!-- parent for content -->
+           <div class="add-destination-parent">
+            <!-- text box - title of page -->
+             <p class="add-destination-title">Add a Destination</p>
+             <!-- text box - page description -->
+              <p class="add-destination-descrip">Let's bring your travel dreams to life! Add a destination and start crafting your perfect getaway.</p>
+              <!-- form holder parent -->
+               <div class="add-destination-form-parent">
+                <!-- form input holder - for side by side -->
+                 <div class="add-destination-form-side-parent">
+                    <!-- form input parent -->
+                 <div class="add-destination-inputs">
+                  <!-- destination name -->
+                   <label for="desName">Destination: </label>
+                   <input type="text" name="desName" id="desName">
+
+                   <!-- destination description -->
+                    <label for="desDescrip">Description: </label>
+                    <textarea name="desDescrip" id="desDescrip"></textarea>
+                 </div>
+
+                 <!-- form holder parent -->
+                  <div class="add-destination-inputs">
+                    <!-- arrival date -->
+                     <label for="desArDate">Arrival Date: </label>
+                     <input type="date" name="desArDate" id="desArDate"> 
+
+                     <!-- departure date -->
+                      <label for="desDepDate">Departure Date: </label>
+                      <input type="date" name="desDepDate" id="desDepDate">
+                      <!-- destination image - only one -->
+                       <label for="desImage">Destination Image: </label>
+                       <input type="file" name="desImage" id="desImage" accept="image/*">
+                  </div>
+                 </div>
+                  <!-- submit btn for add destination -->
+                   <div class="add-submit-btn">
+                     <button id="add-destination-btn">Add Destination</button>
+                   </div>
+                  
+               </div>
+           </div>`;
+
+           //add destination site
+           case "addDestinationSite":
+            return ` <!-- navigation - only on logged in pages -->
+          <nav class="logged-in-nav">
+           <div class="logo"></div>
+
+           <div class="links">
+             <a href="#dashboard">Dashboard</a>
+             <a href="#" id="signout-btn">Log Out</a>
+           </div>
+         </nav>
+
+         <!-- parent for content -->
+          <div class="add-des-site-parent">
+           <!-- text box - title of page -->
+            <p class="add-des-site-title">Add a Destination Site</p>
+            <!-- text box - page description -->
+             <p class="add-des-site-descrip">Time to explore (Destination Name)! Add the sites you want to visit and start mapping out your adventure.</p>
+             <!-- form holder parent -->
+              <div class="add-des-site-form-parent">
+                <div class="add-des-site-inputs">
+
+                 <!-- destination name -->
+                  <label for="des-site-name">Destination Site: </label>
+                  <input type="text" name="des-site-name" id="des-site-name">
+
+                   <!-- destination site images -->
+                   <label for="des-site-image">Destination Site Image: </label>
+                   <input type="file" name="des-site-image" id="des-site-image" accept="image/*">
+
+                  <!-- destination description -->
+                   <label for="des-site-descrip">Description: </label>
+                   <textarea name="des-site-descrip" id="des-site-descrip"></textarea>
+                </div>
+              </div>
+
+
+                 <!-- submit btn for add destination -->
+                 <div class="add-submit-btn">
+                  <button id="add-des-site-btn">Add Destination Site</button>
+                </div>
+          </div>`;
     default:
         return `<h1> 404 - Page Not Found</h1>`;
     }
