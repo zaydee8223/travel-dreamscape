@@ -295,33 +295,20 @@ export function getPageContent(pageID) {
                </div>
            </div>
          </div>
-         <!-- itinerary section -->
+
+           <!-- itinerary section -->
           <p class="main-des-itin"></p>
+          <p class="main-des-itin-stat"></p>
           <!-- status of itinerary text -->
-           <p class="main-des-itin-stat">No places added yet! Start planning your stops!</p>
            <!-- holder for buttons - add sites and added sites -->
             <div class="main-des-stops">
               <!-- add a site btn -->
                <div class="main-add-des-stop-btn">
                 <button id="main-add-site">Add Site</button>
                </div>
-               <!-- sites added -->
-                <div class="main-des-site-box">
-                  <!-- name of site -->
-                   <p class="main-des-site-title">Veracruz</p>
-                   <!-- buttons with options to view edit delete -->
-                    <div class="main-des-site-opt-box">
-                      <!-- button - add -->
-                       <button id="main-des-site-view">View</button>
-
-                       <!-- button - edit -->
-                        <button id="main-des-site-edit">Edit</button>
-
-                        <!-- button - delete -->
-                         <button id="main-des-site-delete">Delete</button>
-                    </div>
-                </div>
+               <div class = "destination-sites"></div>
             </div>
+         
 
                      <!-- destination site modal -->
 <div id="site-details-modal" class="modal hidden">
@@ -587,6 +574,16 @@ export function displayDestinationInfo(destinationId) {
     if(docSnap.exists()) {
       const data = docSnap.data();
 
+      //check if the destination belongs to the current user
+      const currentUser = auth.currentUser?.uid;
+      if (data.userId !== currentUser) {
+        console.error("Destination does not belong to the logged in user");
+        localStorage.removeItem("currentDestinationId");
+        alert("This destination is not accessible. Redirecting to dashboard.");
+        window.location.hash ="#dashboard"; 
+        return;
+      }
+
       //populate the main destination page
       $(".main-des-name-title").text(`Welcome to ${data.desName}!`);
             $(".main-des-descrip").text(data.desDescription);
@@ -597,12 +594,88 @@ export function displayDestinationInfo(destinationId) {
               `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${data.desImage})`
             );  
             $(".main-des-itin").text(`Your ${data.desName} Itinerary:`);
+
+            //pass the destination id to the add site button
+            $("#main-add-site").data("destination-id", destinationId);
+
+            //fetch and display destination sites for this main destination
+            displayDestinationSites(destinationId);
+
         } else {
-            console.error("No such document!");
+            console.error("No such document!"); localStorage.removeItem("currentDestinationId");
+            alert("Destination not found. Redirecting to dashboard.");
+            window.location.hash = "#dashboard";
         }
   }).catch((error) => {
     console.error("Error fetching destination: ", error);
+    alert("An error occurred. Redirecting to dashboard.");
+      localStorage.removeItem("currentDestinationId");
+      window.location.hash = "#dashboard";
   })
 }
 
+//func that will add the destination site to correct sub collection for destination
+export async function addDestinationSite(destinationiD, desSiteName, desSiteDescrip, desSiteImage) {
+  const sitesRef = collection(db, "destinations", destinationiD, "sites");
+
+  try {
+    //upload the site image and get its url
+    const imageURL = await uploadImageToStorage(desSiteImage);
+
+    //add the new site to firestore
+    await addDoc(sitesRef, {
+      desSiteName: desSiteName,
+      desSiteDescrip: desSiteDescrip,
+      desSiteImage: imageURL,
+    });
+    console.log("destination site added successfully");
+  } catch (error) {
+    console.error("error adding destination site: ", error);
+  }
+}
+
+//func to fetch and display destination sites for specific destination
+export function displayDestinationSites(destinationId){
+  const sitesRef = collection(db, "destinations", destinationId, "sites");
+
+  //show loading message while data is being retrieved
+  $(".main-des-itin-stat").html("Retrieving your itinerary...");
+
+  //query firestore for the destination sites
+  onSnapshot(sitesRef, (snapshot) => {
+    let sitesString = "";
+    $(".destination-sites").html("");
+
+    if (snapshot.empty) {
+        // No sites: Display message
+        $(".main-des-itin-stat").text(
+          "No places added yet! Start planning your stops!"
+        );
+      } else {
+        // Sites exist: Update message
+        $(".main-des-itin-stat").text(
+          "Your journey is coming together! Add more places to make it unforgettable."
+        );
+
+      snapshot.forEach((doc) => {
+        const siteData = doc.data();
+
+        //build the html structure for each site
+        sitesString +=  `<div class="main-des-site-box" data-site-id="${doc.id}">`;
+        sitesString +=  `<p class="main-des-site-title">${siteData.desSiteName}</p>`;
+        sitesString += `<div class="main-des-site-opt-box">`;
+        sitesString += `<button id="main-des-site-view" data-site-id="${doc.id}">View</button>`;
+        sitesString += `<button id="main-des-site-edit" data-site-id="${doc.id}">Edit</button>`;
+        sitesString += ` <button id="main-des-site-delete" data-site-id="${doc.id}">Delete</button>`;
+        sitesString += ` </div>`;
+        sitesString += ` </div>`;
+      });
+    }
+
+    //insert the html data into the container
+    $(".destination-sites").append(sitesString);
+  }, (error) => {
+    console.error("Error fetching destination sites: ", error);
+  });
+  }
 
