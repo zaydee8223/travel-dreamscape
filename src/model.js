@@ -223,7 +223,7 @@ export function getPageContent(pageID) {
 
            //add destination site
            case "addDestinationSite":
-            return ` <!-- navigation - only on logged in pages -->
+            return `<!-- navigation - only on logged in pages -->
           <nav class="logged-in-nav">
            <div class="logo"></div>
 
@@ -308,16 +308,14 @@ export function getPageContent(pageID) {
                </div>
                <div class = "destination-sites"></div>
             </div>
-         
-
-                     <!-- destination site modal -->
+            
+                         <!-- destination site modal -->
 <div id="site-details-modal" class="modal hidden">
   <div class="modal-content">
     <span class="close-btn">&times;</span>
-    <h2 id="modal-site-title">Veracruz</h2>
-    <img id="modal-site-image" src="./images/veracruz.jpeg" alt="Veracruz Image" class="modal-image" />
-    <p id="modal-site-description">
-Veracruz is a vibrant coastal city full of history, culture, and stunning beaches. From exploring the historic Fort of San Juan de Ulúa to savoring fresh seafood by the waterfront, it's the perfect blend of adventure and relaxation.</p>
+    <h2 id="modal-site-title"></h2>
+    <img id="modal-site-image" src="" alt="Site Image" class="modal-image" />
+    <p id="modal-site-description"></p>
   <!-- buttons inside of modal - edit and delete -->
    <div class="modal-options-btn">
     <!-- edit button -->
@@ -328,6 +326,104 @@ Veracruz is a vibrant coastal city full of history, culture, and stunning beache
    </div>
 </div>
 </div>`;
+
+          //edit destination
+          case "editDestination":
+            return `  <!-- navigation - only on logged in pages -->
+           <nav class="logged-in-nav">
+            <div class="logo"></div>
+
+            <div class="links">
+              <a href="#dashboard" id="dashboard-link">Dashboard</a>
+              <a href="#" id="signout-btn">Log Out</a>
+            </div>
+          </nav>
+
+          <!-- parent for content -->
+           <div class="edit-destination-parent">
+            <!-- text box - title of page -->
+             <p class="edit-destination-title">Update Destination</p>
+             <!-- text box - page description -->
+              <p class="edit-destination-descrip">Fine-tune your travel plans! Update your destination details to make sure everything’s set for an amazing trip.</p>
+              <!-- form holder parent -->
+               <div class="edit-destination-form-parent">
+                <!-- form input holder - for side by side -->
+                 <div class="edit-destination-form-side-parent">
+                    <!-- form input parent -->
+                 <div class="edit-destination-inputs">
+                  <!-- destination name -->
+                   <label for="desName">Destination: </label>
+                   <input type="text" name="desName" id="desName">
+
+                   <!-- destination description -->
+                    <label for="desDescrip">Description: </label>
+                    <textarea name="desDescrip" id="desDescrip"></textarea>
+                 </div>
+
+                 <!-- form holder parent -->
+                  <div class="edit-destination-inputs">
+                    <!-- arrival date -->
+                     <label for="desArDate">Arrival Date: </label>
+                     <input type="date" name="desArDate" id="desArDate"> 
+
+                     <!-- departure date -->
+                      <label for="desDepDate">Departure Date: </label>
+                      <input type="date" name="desDepDate" id="desDepDate">
+                      <!-- destination image - only one -->
+                       <label for="desImage">Destination Image: </label>
+                       <input type="file" name="desImage" id="desImage" accept="image/*">
+                  </div>
+                 </div>
+                  <!-- submit btn for add destination -->
+                   <div class="add-submit-btn">
+                     <button id="edit-destination-btn">Update Destination</button>
+                   </div>
+                  
+               </div>
+           </div>`;
+
+           //edit destination site
+           case "editDestinationSite":
+            return ` <!-- navigation - only on logged in pages -->
+          <nav class="logged-in-nav">
+            <div class="logo"></div>
+ 
+            <div class="links">
+              <a href="#dashboard" id="dashboard-link">Dashboard</a>
+              <a href="#" id="signout-btn">Log Out</a>
+            </div>
+          </nav>
+ 
+          <!-- parent for content -->
+           <div class="edit-des-site-parent">
+            <!-- text box - title of page -->
+             <p class="edit-des-site-title">Update Destination Site</p>
+             <!-- text box - page description -->
+              <p class="edit-des-site-descrip">Make it unforgettable! Update the details for this spot to ensure it's just right for your adventure.</p>
+              <!-- form holder parent -->
+               <div class="edit-des-site-form-parent">
+                 <div class="edit-des-site-inputs">
+ 
+                  <!-- destination name -->
+                   <label for="des-site-name">Destination Site: </label>
+                   <input type="text" name="des-site-name" id="des-site-name">
+ 
+                    <!-- destination site images -->
+                    <label for="des-site-image">Destination Site Image: </label>
+                    <input type="file" name="des-site-image" id="des-site-image" accept="image/*">
+ 
+                   <!-- destination description -->
+                    <label for="des-site-descrip">Description: </label>
+                    <textarea name="des-site-descrip" id="des-site-descrip"></textarea>
+                 </div>
+               </div>
+ 
+ 
+                  <!-- submit btn for add destination -->
+                  <div class="add-submit-btn">
+                   <button id="edit-des-site-btn">Update Destination Site</button>
+                 </div>
+           </div>`;
     default:
         return `<h1> 404 - Page Not Found</h1>`;
     }
@@ -679,3 +775,25 @@ export function displayDestinationSites(destinationId){
   });
   }
 
+//func to fetch and display site details in the modal
+export function fechAndDisplaySiteDetails(destinationId, siteId) {
+  const siteRef = doc(db, "destinations", destinationId, "sites", siteId);
+
+  getDoc(siteRef).then((docSnap) => {
+    if (docSnap.exists()) {
+      const siteData = docSnap.data();
+
+      //populate the modal with the site data
+      $("#modal-site-title").text(siteData.desSiteName);
+      $("#modal-site-image").attr("src", siteData.desSiteImage);
+      $("#modal-site-description").text(siteData.desSiteDescrip);
+
+      //show the modal
+      $("#site-details-modal").fadeIn();
+    } else {
+      console.error("No such site document");
+    }
+  }). catch((error) => {
+    console.error("Error fetching site details: ", error);
+  });
+}

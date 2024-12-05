@@ -212,17 +212,27 @@ $(".destinations").on("click", "#view-main-des-btn", function () {
 });
 
 // //clicking view on main destination site 
-// $("#main-des-site-view").on("click", () => {
-//     //show modal with fade effect
-//     $("#site-details-modal").fadeIn();
-//   });
+$(".destination-sites").on("click", "#main-des-site-view", function () {
+
+    //grab the site id
+    const siteId = $(this).data("site-id");
+    const destinationId = localStorage.getItem("currentDestinationId");
+
+    if (!siteId || !destinationId) {
+        console.error("Missing Site ID or destination ID");
+        return;
+    }
+
+    //fetch and display the site details
+    MODEL.fechAndDisplaySiteDetails(destinationId, siteId);
+  });
+
 
 //   //close the main destination site modal when the "X" button is clicked
-//   $(".close-btn").on("click", () => {
-//     //hide modal with fade effect
-//     $("#site-details-modal").fadeOut();
-//   });
-
+  $(".close-btn").on("click", () => {
+    //hide modal with fade effect
+    $("#site-details-modal").fadeOut();
+  });
 
 }
 

@@ -901,3 +901,178 @@ nav .links a {
   background-color: transparent;
   font-family: QuicksandRegular;
 }
+
+.edit-destination-parent {
+  width: 1100px;
+  height: 650px;
+  padding: 50px;
+  margin: 40px auto 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #F1F3E8;
+}
+.edit-destination-parent .edit-destination-title {
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: NotoSerifMedium;
+}
+.edit-destination-parent .edit-destination-descrip {
+  width: 545px;
+  color: #000;
+  font-size: 18px;
+  text-align: center;
+  margin: 0 auto;
+  font-family: QuicksandRegular;
+}
+.edit-destination-parent .edit-destination-form-parent {
+  margin-top: 30px;
+}
+.edit-destination-parent .edit-destination-form-parent .edit-destination-form-side-parent {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.edit-destination-parent .edit-destination-form-parent .edit-destination-form-side-parent .edit-destination-inputs label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-family: QuicksandBold;
+}
+.edit-destination-parent .edit-destination-form-parent .edit-destination-form-side-parent .edit-destination-inputs input {
+  width: 269px;
+  border: none;
+  outline: none;
+  display: block;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-bottom: 45px;
+  font-family: QuicksandRegular;
+  background-color: transparent;
+  border-bottom: 2px solid #000;
+}
+.edit-destination-parent .edit-destination-form-parent .edit-destination-form-side-parent .edit-destination-inputs input[type=file]::file-selector-button {
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  height: 30px;
+  cursor: pointer;
+  font-family: QuicksandRegular;
+  background-color: #b29d85;
+}
+.edit-destination-parent .edit-destination-form-parent .edit-destination-form-side-parent .edit-destination-inputs input[type=file]::file-selector-button:hover {
+  background-color: #9d9f94;
+}
+.edit-destination-parent .edit-destination-form-parent .edit-destination-form-side-parent .edit-destination-inputs textarea {
+  width: 269px;
+  height: 150px;
+  display: block;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-bottom: 45px;
+  font-family: QuicksandRegular;
+  background-color: transparent;
+  border: 2px solid #000;
+}
+.edit-destination-parent .edit-destination-form-parent .add-submit-btn {
+  width: 370px;
+  margin: 0 auto;
+}
+.edit-destination-parent .edit-destination-form-parent .add-submit-btn #edit-destination-btn {
+  width: 370px;
+  height: 50px;
+  border: none;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-family: QuicksandRegular;
+  background-color: #b29d85;
+}
+
+.edit-des-site-parent {
+  width: 1100px;
+  height: 700px;
+  padding: 50px;
+  margin: 40px auto 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #F1F3E8;
+}
+.edit-des-site-parent .edit-des-site-title {
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: NotoSerifMedium;
+}
+.edit-des-site-parent .edit-des-site-descrip {
+  width: 545px;
+  color: #000;
+  font-size: 18px;
+  text-align: center;
+  margin: 0 auto;
+  font-family: QuicksandRegular;
+}
+.edit-des-site-parent .edit-des-site-form-parent {
+  margin-top: 30px;
+  width: 250px;
+  margin: 20px auto 0 auto;
+}
+.edit-des-site-parent .edit-des-site-form-parent .edit-des-site-inputs label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-family: QuicksandBold;
+}
+.edit-des-site-parent .edit-des-site-form-parent .edit-des-site-inputs input {
+  width: 269px;
+  border: none;
+  outline: none;
+  display: block;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-bottom: 45px;
+  font-family: QuicksandRegular;
+  background-color: transparent;
+  border-bottom: 2px solid #000;
+}
+.edit-des-site-parent .edit-des-site-form-parent .edit-des-site-inputs input[type=file]::file-selector-button {
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  height: 30px;
+  cursor: pointer;
+  font-family: QuicksandRegular;
+  background-color: #b29d85;
+}
+.edit-des-site-parent .edit-des-site-form-parent .edit-des-site-inputs input[type=file]::file-selector-button:hover {
+  background-color: #9d9f94;
+}
+.edit-des-site-parent .edit-des-site-form-parent .edit-des-site-inputs textarea {
+  width: 269px;
+  height: 100px;
+  display: block;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-bottom: 45px;
+  font-family: QuicksandRegular;
+  background-color: transparent;
+  border: 2px solid #000;
+}
+.edit-des-site-parent .add-submit-btn {
+  width: 350px;
+  margin: 0 auto;
+}
+.edit-des-site-parent .add-submit-btn #edit-des-site-btn {
+  width: 370px;
+  height: 50px;
+  border: none;
+  margin: 10px auto 0 auto;
+  font-size: 16px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-family: QuicksandRegular;
+  background-color: #b29d85;
+}
