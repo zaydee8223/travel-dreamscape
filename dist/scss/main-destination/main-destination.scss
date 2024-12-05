@@ -6,9 +6,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
-        url('../../images/mexico-thumb.jpg');
 
         //content inside of the hero image
         .main-des-content{
@@ -35,23 +32,19 @@
             //dates of travel 
             .main-des-dates{
                 display: flex;
-                align-items:flex-end;
                 font-size: 13px;
-                margin-top: 180px;
                 color: $white;
-                justify-content: space-evenly;
+                position: absolute;
+                bottom: 350px;
+                left: 50%; 
+                transform: translateX(-50%);
+                justify-content: space-between;
                 font-family: QuicksandRegular;
                 
+                //arrival date, line and departure date styling
+                .main-des-arr-date, .line, .main-des-dep-date{
+                    margin-right: 20px;
+                }
             }
         }
-}
-
-//itinerary section
-//title of the section
-.main-des-itin{
-    width: 495px;
-    color: $black;
-    font-size: 22px;
-    margin-left: 200px;
-    font-family: NotoSerifMedium;
 }

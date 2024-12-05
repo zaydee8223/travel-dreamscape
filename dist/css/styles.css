@@ -281,7 +281,7 @@ nav .links a {
 .dash-main-des {
   display: flex;
   flex-wrap: wrap;
-  gap: 220px;
+  gap: 100px;
   justify-content: center;
   margin-top: 60px;
 }
@@ -301,31 +301,39 @@ nav .links a {
   margin-top: 50px;
   color: #523E25;
 }
-.dash-main-des .dash-main-des-box {
+.dash-main-des .destinations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 150px;
+  margin-bottom: 50px;
+  padding: 10px;
+  justify-content: center;
+}
+.dash-main-des .destinations .dash-main-des-box {
   width: 320px;
   height: 460px;
   border-radius: 23px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.dash-main-des .dash-main-des-box .dash-main-des-img {
+.dash-main-des .destinations .dash-main-des-box .dash-main-des-img {
   width: 320px;
   height: 200px;
   object-fit: cover;
   border-radius: 25px 25px 0 0;
 }
-.dash-main-des .dash-main-des-box .dash-main-des-title {
+.dash-main-des .destinations .dash-main-des-box .dash-main-des-title {
   font-family: NotoSerifRegular;
   font-size: 20px;
   margin-top: 20px;
   text-align: center;
 }
-.dash-main-des .dash-main-des-box .dash-main-des-descrip {
+.dash-main-des .destinations .dash-main-des-box .dash-main-des-descrip {
   font-family: QuicksandRegular;
   font-size: 14px;
   text-align: center;
   width: 310px;
 }
-.dash-main-des .dash-main-des-box .dash-main-des-date-box {
+.dash-main-des .destinations .dash-main-des-box .dash-main-des-date-box {
   display: flex;
   align-items: center;
   font-size: 13px;
@@ -333,29 +341,31 @@ nav .links a {
   font-family: QuicksandRegular;
   justify-content: space-evenly;
 }
-.dash-main-des .dash-main-des-box .dash-main-des-option-box {
+.dash-main-des .destinations .dash-main-des-option-box {
   display: flex;
   align-items: center;
   font-size: 13px;
   font-family: QuicksandRegular;
   justify-content: space-evenly;
   border: none;
-  margin-top: 30px;
-  background-color: #fff;
+  width: 320px;
+  margin: 65px auto 0 auto;
+  background-color: transparent;
+  position: absolute;
 }
-.dash-main-des .dash-main-des-box .dash-main-des-option-box #view-main-des-btn {
+.dash-main-des .destinations .dash-main-des-option-box #view-main-des-btn {
   border: none;
   cursor: pointer;
   background-color: #fff;
   color: #5F6343;
 }
-.dash-main-des .dash-main-des-box .dash-main-des-option-box #edit-main-des-btn {
+.dash-main-des .destinations .dash-main-des-option-box #edit-main-des-btn {
   border: none;
   cursor: pointer;
   background-color: #fff;
   color: #b29d85;
 }
-.dash-main-des .dash-main-des-box .dash-main-des-option-box #delete-main-des-btn {
+.dash-main-des .destinations .dash-main-des-option-box #delete-main-des-btn {
   border: none;
   cursor: pointer;
   background-color: #fff;
@@ -707,7 +717,6 @@ nav .links a {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../images/mexico-thumb.jpg");
 }
 .main-des-hero .main-des-content .main-des-name-title {
   color: #fff;
@@ -726,12 +735,17 @@ nav .links a {
 }
 .main-des-hero .main-des-content .main-des-dates {
   display: flex;
-  align-items: flex-end;
   font-size: 13px;
-  margin-top: 180px;
   color: #fff;
-  justify-content: space-evenly;
+  position: absolute;
+  bottom: 350px;
+  left: 50%;
+  transform: translateX(-50%);
+  justify-content: space-between;
   font-family: QuicksandRegular;
+}
+.main-des-hero .main-des-content .main-des-dates .main-des-arr-date, .main-des-hero .main-des-content .main-des-dates .line, .main-des-hero .main-des-content .main-des-dates .main-des-dep-date {
+  margin-right: 20px;
 }
 
 .main-des-itin {
@@ -752,20 +766,25 @@ nav .links a {
 }
 
 .main-des-stops {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 50px;
+  justify-items: center;
   align-items: center;
-  justify-content: space-evenly;
+  width: 70%;
+  margin-left: 200px;
+  margin-top: 20px;
 }
 .main-des-stops .main-add-des-stop-btn {
+  grid-column: span 1;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  gap: 220px;
   justify-content: center;
+  margin-top: 20px;
 }
 .main-des-stops .main-add-des-stop-btn #main-add-site {
   width: 183px;
   height: 60px;
-  margin-top: 30px;
   margin-bottom: 30px;
   border: none;
   cursor: pointer;
@@ -816,19 +835,17 @@ nav .links a {
   color: #5B260E;
 }
 
-/* Modal styling */
 .modal {
-  display: none;
-  position: fixed;
   top: 0;
   right: 0;
-  height: 100%;
   width: 50%;
+  height: 100%;
+  z-index: 1000;
+  display: none;
+  position: fixed;
+  overflow-y: auto;
   background: rgb(255, 255, 255);
   box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
-  z-index: 1000;
-  /* Content inside the modal */
 }
 .modal .modal-content {
   padding: 20px;
@@ -841,24 +858,46 @@ nav .links a {
 }
 .modal .modal-content #modal-site-description {
   width: 500px;
-  font-size: 18px;
   color: #000;
+  font-size: 18px;
   text-align: center;
   margin: 50px auto 0 auto;
   font-family: QuicksandRegular;
 }
 .modal .close-btn {
-  position: absolute;
   top: 10px;
-  right: 20px; /* Move it inside the modal on the left */
-  font-size: 40px;
-  font-weight: bold;
+  right: 20px;
   color: #000;
+  font-size: 40px;
   cursor: pointer;
+  font-weight: bold;
+  position: absolute;
 }
 .modal .modal-image {
-  max-width: 100%;
   height: auto;
-  border-radius: 8px;
   margin: 20px 0;
+  max-width: 100%;
+  border-radius: 8px;
+}
+.modal .modal-options-btn {
+  display: flex;
+  margin-top: 60px;
+  align-items: center;
+  justify-content: space-around;
+}
+.modal .modal-options-btn #modal-des-site-edit-btn {
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #B58249;
+  background-color: transparent;
+  font-family: QuicksandRegular;
+}
+.modal .modal-options-btn #modal-des-site-delete-btn {
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #5B260E;
+  background-color: transparent;
+  font-family: QuicksandRegular;
 }

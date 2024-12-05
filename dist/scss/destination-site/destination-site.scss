@@ -1,18 +1,17 @@
-/* Modal styling */
+//modal styliny
 .modal {
-    display: none; 
-    position: fixed;
     top: 0;
     right: 0; 
-    height: 100%;
     width: 50%;
+    height: 100%;
+    z-index: 1000;
+    display: none; 
+    position: fixed;
+    overflow-y: auto;
     background: rgba(255, 255, 255, 1);
     box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2); 
-    overflow-y: auto;
-    z-index: 1000;
-  
-  
-  /* Content inside the modal */
+
+  //content inside modal
   .modal-content {
     padding: 20px;
     text-align: center;
@@ -27,28 +26,59 @@
     //description of site
     #modal-site-description{
         width: 500px;
-        font-size: 18px;
         color: $black;
+        font-size: 18px;
         text-align: center;
         margin: 50px auto 0 auto;
         font-family: QuicksandRegular;
     }
   }
   
+  //close button in modal
   .close-btn {
-    position: absolute;
     top: 10px;
-    right: 20px; /* Move it inside the modal on the left */
-    font-size: 40px;
-    font-weight: bold;
+    right: 20px; 
     color: $black;
+    font-size: 40px;
     cursor: pointer;
+    font-weight: bold;
+    position: absolute;
   }
   
+
+  //image of the modal 
   .modal-image {
-    max-width: 100%;
     height: auto;
-    border-radius: 8px;
     margin: 20px 0;
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  //edit and view button inside of modal
+  .modal-options-btn{
+    display: flex;
+    margin-top: 60px;
+    align-items: center;
+    justify-content: space-around;
+
+    //edit button
+    #modal-des-site-edit-btn{
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: $edit-btn;
+      background-color: transparent;
+      font-family: QuicksandRegular;
+    }
+
+    //delete button
+    #modal-des-site-delete-btn{
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: $delete-cancel-btn;
+      background-color: transparent;
+      font-family: QuicksandRegular;
+    }
   }
 }  

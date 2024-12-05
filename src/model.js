@@ -6,14 +6,17 @@ import { firebaseConfig } from "./firebaseConfig";
 
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword } from "firebase/auth";
 
-import { getFirestore, collection, addDoc, getDocs, onSnapshot } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, onSnapshot, DocumentReference, query, where, doc, getDoc} from 'firebase/firestore';
 
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
 const db = getFirestore(app);
+
+const storage = getStorage(app);
 
 var appFirstName = "";
 
@@ -32,12 +35,15 @@ onAuthStateChanged(auth, (user) => {
         //the app first name is going to be the first name 
         appFirstName = firstName;
 
+        //attach firestore listener for the curent users destinations
+        const userId = user.uid;
+        fetchUserDestinations(userId);
+
         //if no user / logged out
     } else {
         console.log("logged out");
-
-        //clear the value of the user name
-        appFirstName = "";
+        //reset the apps first name 
+        appFirstName = ""; 
     }
 });
 
@@ -136,8 +142,8 @@ export function getPageContent(pageID) {
 
       //dashboard 
       case "dashboard":
-        return `  <!-- navigation - only on logged in pages -->
-          <nav class="logged-in-nav">
+        return `   <!-- navigation - only on logged in pages -->
+           <nav class="logged-in-nav">
             <div class="logo"></div>
 
             <div class="links">
@@ -147,47 +153,17 @@ export function getPageContent(pageID) {
           </nav>
           <!-- display user's name w trips -->
            <div class="dash-headers">
-            <h1 class="dash-users-trips">${appFirstName}'s Trips</h1>
-            <p class="dash-user-trip-stat">You haven't added any trips yet! Start your adventure by adding your dream destinations.</p>
+            <h1 class="dash-users-trips">Your Trips</h1>
+            <p class="dash-user-trip-stat"></p>
            </div>
-
+           
            <!-- every destination and button -->
            <div class="dash-main-des">
-           <!-- add destination btn -->
+            <div class="destinations">  <!-- add destination btn -->
             <div class="dash-add-des" id="dashboard-add-des-btn">
               <i class="fa-solid fa-plus"></i>
-            </div>
-
-            <!-- box for main destination -->
-             <div class="dash-main-des-box">
-               <img src="./images/mexico-thumb.jpg" id="" class="dash-main-des-img">
-              
-               <!-- title of destination -->
-                <p class="dash-main-des-title">Mexico</p>
-                <!-- small description of destination -->
-                 <p class="dash-main-des-descrip">Can't wait to explore the beautiful beaches, indulge in authentic tacos, and visit ancient ruins! The vibrant culture and friendly locals make it a must-visit destination!</p>
-                 <!-- dates box -->
-                  <div class="dash-main-des-date-box">
-                    <!-- arrival date -->
-                     <p class="dash-main-des-arrive">12 - 20 - 2024 </p> 
-                     <p class="dash-main-des-line"> |</p>
-                     <!-- departure date -->
-                      <p class="dash-main-des-depart">01 - 05 - 2025</p>
-                  </div>
-
-                  <!-- options for main destination -->
-                   <div class="dash-main-des-option-box">
-                    <!-- view btn -->
-                     <button class="dash-main-des-option-btn" id="view-main-des-btn">View</button>
-
-                      <!-- edit btn -->
-                      <button class="dash-main-des-option-btn" id="edit-main-des-btn">Edit</button>
-
-                       <!-- view btn -->
-                     <button class="dash-main-des-option-btn" id="delete-main-des-btn">Delete</button>
-                   </div>
+            </div> 
              </div>
-             
          </div>`;
 
          //add destination
@@ -197,7 +173,7 @@ export function getPageContent(pageID) {
             <div class="logo"></div>
 
             <div class="links">
-              <a href="#dashboard">Dashboard</a>
+              <a href="#dashboard" id="dashboard-link">Dashboard</a>
               <a href="#" id="signout-btn">Log Out</a>
             </div>
           </nav>
@@ -252,7 +228,7 @@ export function getPageContent(pageID) {
            <div class="logo"></div>
 
            <div class="links">
-             <a href="#dashboard">Dashboard</a>
+             <a href="#dashboard" id="dashboard-link">Dashboard</a>
              <a href="#" id="signout-btn">Log Out</a>
            </div>
          </nav>
@@ -295,33 +271,32 @@ export function getPageContent(pageID) {
           <div class="logo"></div>
 
           <div class="links">
-            <a href="#dashboard">Dashboard</a>
+            <a href="#dashboard" id="dashboard-link">Dashboard</a>
             <a href="#" id="signout-btn">Log Out</a>
           </div>
         </nav>
 
-        <!-- big hero image - main des image -->
+         <!-- big hero image - main des image -->
          <div class="main-des-hero">
           <!-- text content inside of hero -->
            <div class="main-des-content">
             <!-- title of destination -->
-             <p class="main-des-name-title">Welcome to Mexico!</p>
+             <p class="main-des-name-title"></p>
              <!-- description of destination -->
-              <p class="main-des-descrip">Can't wait to explore the beautiful beaches, indulge in authentic tacos, and visit ancient ruins! The vibrant culture and friendly locals make it a must-visit destination! Can't wait to explore the beautiful beaches, indulge in authentic tacos, and visit ancient ruins! The vibrant culture and friendly locals make it a must-visit destination!</p>
+              <p class="main-des-descrip"</p>
               <!-- dates of travel -->
                <div class="main-des-dates">
                 <!-- arrival date  -->
-                 <p class="main-des-arr-date">12 - 20 - 2024</p>
+                 <p class="main-des-arr-date"></p>
                  <!-- line -->
                   <p class="line"> | </p>
                   <!-- departure date -->
-                   <p class="main-des-dep-ate">01 - 05 - 2025</p>
+                   <p class="main-des-dep-date"></p>
                </div>
            </div>
          </div>
-
          <!-- itinerary section -->
-          <p class="main-des-itin">Your (Destination Name) Itinerary:</p>
+          <p class="main-des-itin"></p>
           <!-- status of itinerary text -->
            <p class="main-des-itin-stat">No places added yet! Start planning your stops!</p>
            <!-- holder for buttons - add sites and added sites -->
@@ -348,7 +323,7 @@ export function getPageContent(pageID) {
                 </div>
             </div>
 
-            <!-- destination site modal -->
+                     <!-- destination site modal -->
 <div id="site-details-modal" class="modal hidden">
   <div class="modal-content">
     <span class="close-btn">&times;</span>
@@ -356,7 +331,15 @@ export function getPageContent(pageID) {
     <img id="modal-site-image" src="./images/veracruz.jpeg" alt="Veracruz Image" class="modal-image" />
     <p id="modal-site-description">
 Veracruz is a vibrant coastal city full of history, culture, and stunning beaches. From exploring the historic Fort of San Juan de Ulúa to savoring fresh seafood by the waterfront, it's the perfect blend of adventure and relaxation.</p>
-  </div>
+  <!-- buttons inside of modal - edit and delete -->
+   <div class="modal-options-btn">
+    <!-- edit button -->
+     <button id="modal-des-site-edit-btn">Edit</button>
+
+     <!-- delete button -->
+      <button id="modal-des-site-delete-btn">Delete</button>
+   </div>
+</div>
 </div>`;
     default:
         return `<h1> 404 - Page Not Found</h1>`;
@@ -376,9 +359,22 @@ export function createAccount(fn, ln, sEm, sPw) {
                 displayName: `${fn} ${ln}`
             }).then(() => {
                 console.log("Account created and profile updated:", user);
+
+                //force refresh the user state (this will trigger onAuthStateChanged again)
+                onAuthStateChanged(auth, (user) => {
+                  if (user) {
+                      const fullName = user.displayName;
+                      const firstName = fullName.split(" ")[0];
+                      //first name will be available too
+                      appFirstName = firstName;  
+                  }
+              });
                
-               //go to modal functionality 
-               showLoginSignupModal();
+              //go to dashboard
+        window.location.hash = "#dashboard";
+        
+        //go to modal functionality
+        showLoginSignupModal();
 
             }).catch((profileError) => {
                 console.log("Error updating profile:", profileError.message);
@@ -398,9 +394,13 @@ export function logUserIn(lEm, lPw) {
       .then((userCredential) => {
           //success log in
           const user = userCredential.user;
+
+          //go to dashboard
+        window.location.hash = "#dashboard";
+
+         //go to modal functionality
+         showLoginSignupModal();
          
-          //go to modal functionality
-          showLoginSignupModal();
 
       })
       .catch((error) => {
@@ -424,9 +424,6 @@ function showLoginSignupModal() {
     $("#proceed-btn").on("click", () => {
        //hide the modal 
         modal.hide();
-
-        //go to dashboard
-        window.location.hash = "#dashboard";
     });
 
     //handle the cancel button
@@ -464,8 +461,148 @@ export function signUserOut() {
     .then(() => {
       $(".profile .displayName").html("");
       $(".profile .profileImage").html("");
+      // Clear userId from localStorage
+      localStorage.removeItem('userId');
+
     })
     .catch((error) =>{
       console.log("error" , error.message);
     });
 }
+
+
+//add destination to firestore
+export async function addDestinationToDB(destinationObj){
+  //get the current users uid
+  const userId = auth.currentUser?.uid;
+  if(!userId) {
+    console.error("No user is logged in.");
+    return;
+  }
+
+  //upload the img and get the url 
+  const imageURL = await uploadImageToStorage(destinationObj.desImage);
+
+  //add the destination document to firestore
+  await addDoc(collection(db, "destinations"),{
+    ...destinationObj,
+    desImage: imageURL,
+    //attach the user id
+    userId: userId
+  }).then((docRef) =>{
+    console.log("Document written with ID: " , docRef.id);
+  }).catch((error)=>{
+    console.error("Error adding document: ", error.message);
+  });
+}
+
+//uplpad the image to firebase storage
+async function uploadImageToStorage(imageFile){
+  //create a reference to firebase storage location where the image will be
+  const storageRef = ref(storage, 'destinations/' + imageFile.name);
+
+  try {
+    //upload the file to firebase storage
+    await uploadBytes(storageRef, imageFile);
+
+    //get the download URL for the uploaded image
+    const downloadURL = await getDownloadURL(storageRef);
+
+    //return the download url
+    return downloadURL;
+  } catch (error) {
+    console.error("Error uploading image: ", error.message);
+    throw new Error("Error uploading image to Firebase Storage");
+  }
+}
+
+//query firestore for documents where userId matches the logged-in user's uid
+export function fetchUserDestinations(userId) {
+
+  // show a loading message while fetching
+  $(".dash-user-trip-stat").text("Loading your destination dreams...");
+
+  //set a flag to check if firestore response is processed
+  let dataFetched = false;
+
+  //query firestore for destinations where userId matches
+  const queryRef = query(collection(db, "destinations"), where("userId", "==", userId));
+
+  //attach Firestore listener
+  onSnapshot(queryRef, (snapshot) => {
+    let destinationString = "";
+    //mark data as fetched
+    dataFetched = true;
+
+    if (snapshot.empty) {
+      //no destinations: update the message
+      $(".dash-user-trip-stat").text(
+        "You haven't added any trips yet! Start your adventure by adding your dream destinations."
+      );
+    } else {
+      // destinations exist: update the message
+      $(".dash-user-trip-stat").text(
+        "Your dream list is shaping up! Select a trip to view, edit, or remove from your list."
+      );
+
+      //add destinations
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        destinationString += `<div class="dash-main-des-box">`;
+        destinationString += `<img src="${data.desImage}" class="dash-main-des-img">`;
+        destinationString += `<p class="dash-main-des-title">${data.desName}</p>`;
+        destinationString += `<p class="dash-main-des-descrip">${data.desDescription}</p>`;
+        destinationString += `<div class="dash-main-des-date-box">`;
+        destinationString += `<p class="dash-main-des-arrive">${data.arrivalDate}</p>`;
+        destinationString += `<p class="dash-main-des-line"> |</p>`;
+        destinationString += `<p class="dash-main-des-depart">${data.departDate}</p>`;
+        destinationString += `</div>`;
+        destinationString += `<div class="dash-main-des-option-box">`;
+        destinationString += `<button class="dash-main-des-option-btn" id="view-main-des-btn" data-id="${doc.id}">View</button>`;
+        destinationString += `<button class="dash-main-des-option-btn" id="edit-main-des-btn">Edit</button>`;
+        destinationString += `<button class="dash-main-des-option-btn" id="delete-main-des-btn">Delete</button>`;
+        destinationString += `</div>`;
+        destinationString += `</div>`;
+      });
+
+      //append the destinations to the DOM
+      $(".destinations").append(destinationString);
+    }
+  });
+
+  // timeout as a safety measure if Firestore is slow
+  setTimeout(() => {
+    if (!dataFetched) {
+      $(".dash-user-trip-stat").text("Still loading, please wait...");
+    }
+  }, 3000);
+}
+
+//func that fetches the clicked destinations data from firestore and populates the page
+export function displayDestinationInfo(destinationId) {
+  //get the firestore document by its id
+  const destinationRef = doc(db, "destinations", destinationId);
+
+  getDoc(destinationRef).then((docSnap) => {
+    if(docSnap.exists()) {
+      const data = docSnap.data();
+
+      //populate the main destination page
+      $(".main-des-name-title").text(`Welcome to ${data.desName}!`);
+            $(".main-des-descrip").text(data.desDescription);
+            $(".main-des-arr-date").text(data.arrivalDate);
+            $(".main-des-dep-date").text(data.departDate);
+            $(".main-des-hero").css(
+              "background-image",
+              `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${data.desImage})`
+            );  
+            $(".main-des-itin").text(`Your ${data.desName} Itinerary:`);
+        } else {
+            console.error("No such document!");
+        }
+  }).catch((error) => {
+    console.error("Error fetching destination: ", error);
+  })
+}
+
+
