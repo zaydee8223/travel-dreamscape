@@ -495,12 +495,12 @@ function showLoginSignupModal() {
     const modal = $("#loginSignupModal");
 
     //show the modal
-    modal.show();
+    modal.fadeIn();
 
     //handle the proceed button
     $("#proceed-btn").on("click", () => {
        //hide the modal 
-        modal.hide();
+        modal.fadeOut();
     });
 }
 
