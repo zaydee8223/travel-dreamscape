@@ -1,5 +1,5 @@
 //all modal 
-#loginSignupModal ,#confirmDeleteModal , #deleteDesDoneModal ,#deleteSiteDoneModal, #confirmLogoutModal
+#loginSignupModal ,#confirmDeleteModal , #confirmDeleteSiteModal, #deleteDesDoneModal ,#deleteSiteDoneModal, #confirmLogoutModal
 {
     display: none;
 }
@@ -54,7 +54,7 @@
             justify-content: space-evenly;
             
             //procceed - dashboard + delete - cancel
-            #proceed-btn, #cancel-delete-btn {
+            #proceed-btn, #cancel-delete-btn, #cancel-delete-site-btn {
                 cursor: pointer;
                 font-size: 18px;
                 font-family: QuicksandRegular;
@@ -69,7 +69,7 @@
             }
 
             //cancel - logout + delete - confirm
-            #cancel-btn, #confirm-delete-btn {
+            #cancel-btn, #confirm-delete-btn, #confirm-delete-site-btn {
                 cursor: pointer;
                 font-size: 18px;
                 font-family: QuicksandRegular;
@@ -126,7 +126,7 @@
             justify-content: space-evenly;
             
             //delete confirm button
-            #delete-ok-btn {
+            #delete-ok-btn, #delete-site-ok-btn {
                 cursor: pointer;
                 font-size: 18px;
                 font-family: QuicksandRegular;

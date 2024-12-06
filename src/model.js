@@ -1,3 +1,4 @@
+//import all necessary dependencies from firebase + import jquery
 import * as $ from 'jquery';
 
 import { initializeApp } from "firebase/app";
@@ -6,10 +7,11 @@ import { firebaseConfig } from "./firebaseConfig";
 
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword } from "firebase/auth";
 
-import { getFirestore, collection, addDoc, getDocs, onSnapshot, DocumentReference, query, where, doc, getDoc} from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, onSnapshot, DocumentReference, query, where, doc, getDoc, updateDoc, deleteDoc} from 'firebase/firestore';
 
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
+//init app, auth, db, storage
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
@@ -18,22 +20,11 @@ const db = getFirestore(app);
 
 const storage = getStorage(app);
 
-var appFirstName = "";
-
 //on auth state changed func
 onAuthStateChanged(auth, (user) => {
     //if there is a user 
     if (user) {
         console.log("logged in");
-
-        //fetch their displayname
-        const fullName = user.displayName;
-
-        //grab only the first name 
-        const firstName = fullName.split(" ")[0];
-
-        //the app first name is going to be the first name 
-        appFirstName = firstName;
 
         //attach firestore listener for the curent users destinations
         const userId = user.uid;
@@ -42,12 +33,12 @@ onAuthStateChanged(auth, (user) => {
         //if no user / logged out
     } else {
         console.log("logged out");
-        //reset the apps first name 
-        appFirstName = ""; 
     }
 });
 
-//contains all content for the app
+//PAGE CONTENT
+
+//func that contains all content for the app
 export function getPageContent(pageID) {
     switch(pageID) {
         //home
@@ -159,10 +150,11 @@ export function getPageContent(pageID) {
            
            <!-- every destination and button -->
            <div class="dash-main-des">
-            <div class="destinations">  <!-- add destination btn -->
+            <!-- add destination btn -->
             <div class="dash-add-des" id="dashboard-add-des-btn">
               <i class="fa-solid fa-plus"></i>
             </div> 
+            <div class="destinations"> 
              </div>
          </div>`;
 
@@ -429,6 +421,8 @@ export function getPageContent(pageID) {
     }
 }
 
+//ACCOUNT CREATION 
+
 //create account function
 export function createAccount(fn, ln, sEm, sPw) {
 
@@ -508,34 +502,6 @@ function showLoginSignupModal() {
        //hide the modal 
         modal.hide();
     });
-
-    //handle the cancel button
-    $("#cancel-btn").on("click", () => {
-        //hide the login/signup modal
-        modal.hide();
-    
-        //show the logout modal
-        showLogoutModal();
-    });
-}
-
-//modal functionality - log out 
-export function showLogoutModal() {
-    //get the appropriate modal
-    const modal = $("#confirmLogoutModal");
-
-    //show the modal
-    modal.show();
-
-    //handle the okay button
-    $("#confirm-logout-btn").on("click", () => {
-        //hide modal
-        modal.hide();
-
-        //redirect to home
-        window.location.hash = "#home";
-    });
-
 }
 
 //signed out function
@@ -553,6 +519,7 @@ export function signUserOut() {
     });
 }
 
+//ADD A DESTINATION AND DESTINATION SITE 
 
 //add destination to firestore
 export async function addDestinationToDB(destinationObj){
@@ -580,7 +547,7 @@ export async function addDestinationToDB(destinationObj){
 }
 
 //uplpad the image to firebase storage
-async function uploadImageToStorage(imageFile){
+export async function uploadImageToStorage(imageFile){
   //create a reference to firebase storage location where the image will be
   const storageRef = ref(storage, 'destinations/' + imageFile.name);
 
@@ -603,7 +570,7 @@ async function uploadImageToStorage(imageFile){
 export function fetchUserDestinations(userId) {
 
   // show a loading message while fetching
-  $(".dash-user-trip-stat").text("Loading your destination dreams...");
+  $(".dash-user-trip-stat").html("Loading your destination dreams...");
 
   //set a flag to check if firestore response is processed
   let dataFetched = false;
@@ -613,6 +580,7 @@ export function fetchUserDestinations(userId) {
 
   //attach Firestore listener
   onSnapshot(queryRef, (snapshot) => {
+    $(".destinations").html("");
     let destinationString = "";
     //mark data as fetched
     dataFetched = true;
@@ -642,8 +610,8 @@ export function fetchUserDestinations(userId) {
         destinationString += `</div>`;
         destinationString += `<div class="dash-main-des-option-box">`;
         destinationString += `<button class="dash-main-des-option-btn" id="view-main-des-btn" data-id="${doc.id}">View</button>`;
-        destinationString += `<button class="dash-main-des-option-btn" id="edit-main-des-btn">Edit</button>`;
-        destinationString += `<button class="dash-main-des-option-btn" id="delete-main-des-btn">Delete</button>`;
+        destinationString += `<button class="dash-main-des-option-btn" id="edit-main-des-btn" data-id="${doc.id}">Edit</button>`;
+        destinationString += `<button class="dash-main-des-option-btn" id="delete-main-des-btn" data-id="${doc.id}">Delete</button>`;
         destinationString += `</div>`;
         destinationString += `</div>`;
       });
@@ -743,12 +711,12 @@ export function displayDestinationSites(destinationId){
     $(".destination-sites").html("");
 
     if (snapshot.empty) {
-        // No sites: Display message
+        //no sites = display message
         $(".main-des-itin-stat").text(
           "No places added yet! Start planning your stops!"
         );
       } else {
-        // Sites exist: Update message
+        //sites exist - update message
         $(".main-des-itin-stat").text(
           "Your journey is coming together! Add more places to make it unforgettable."
         );
@@ -788,6 +756,9 @@ export function fechAndDisplaySiteDetails(destinationId, siteId) {
       $("#modal-site-image").attr("src", siteData.desSiteImage);
       $("#modal-site-description").text(siteData.desSiteDescrip);
 
+      //store the current siteId so correct site is edited later
+      localStorage.setItem("currentSiteId", siteId);
+
       //show the modal
       $("#site-details-modal").fadeIn();
     } else {
@@ -796,4 +767,123 @@ export function fechAndDisplaySiteDetails(destinationId, siteId) {
   }). catch((error) => {
     console.error("Error fetching site details: ", error);
   });
+}
+
+//EDIT DESTINATION AND DESTINATION SITE
+
+//func to fetch the existing destination data and prefill the form
+export function fetchDesDataToEdit(destinationId){
+  const destinationRef = doc(db, "destinations", destinationId);
+
+  getDoc(destinationRef).then((docSnap) => {
+    if (docSnap.exists()){
+      const data = docSnap.data();
+
+      //prefill the form details
+      $("#desName").val(data.desName);
+      $("#desDescrip").val(data.desDescription);
+      $("#desArDate").val(data.arrivalDate);
+      $("#desDepDate").val(data.departDate);
+
+       //storca old data in localStorage if you want to restore old values if user empties fields
+       localStorage.setItem("oldDesName", data.desName);
+       localStorage.setItem("oldDesDescrip", data.desDescription);
+       localStorage.setItem("oldArDate", data.arrivalDate);
+       localStorage.setItem("oldDepDate", data.departDate);
+
+      //store the old image url so if user doesnt change it, keep old one
+      localStorage.setItem("oldDestinationImage", data.desImage);
+    } else {
+      console.error("No such document");
+      alert("Destination not found. Redirecting to Dashboard...");
+      window.location.hash = "#dashboard";
+    }
+  }).catch((error) => {
+    console.error("Error fetching destination: ", error);
+    alert("An error occurred. Redirecting to dashboard...");
+    window.location.hash = "#dashboard";
+  });
+}
+
+//func to update firestore 
+export async function updateDestinationInDB(destinationId, updateData) {
+  const destinationRef = doc(db, "destinations", destinationId);
+
+  try {
+    await updateDoc(destinationRef, updateData);
+    console.log("Destination updated successfully");
+  } catch (error) {
+    console.error("Error updating destination: ", error);
+    alert("An error ocurred while updating the destination.");
+  }
+}
+
+//func to fetch the destinationsite data to edit 
+export function fetchDesSiteDataToEdit(destinationId, siteId) {
+  const siteRef = doc(db, "destinations", destinationId, "sites", siteId);
+
+  getDoc(siteRef).then((docSnap) => {
+    if (docSnap.exists()) {
+      const siteData = docSnap.data();
+
+      //prefill the edit form
+      $("#des-site-name").val(siteData.desSiteName);
+      $("#des-site-descrip").val(siteData.desSiteDescrip);
+
+      //store old values in localStorage
+      localStorage.setItem("oldSiteName", siteData.desSiteName);
+      localStorage.setItem("oldSiteDescrip", siteData.desSiteDescrip);
+      localStorage.setItem("oldSiteImage", siteData.desSiteImage);
+    }else {
+      console.error("No such site document");
+      alert("Site not found. Redirecting to main destination...");
+      window.location.hash = "#mainDestination";
+      window.location.reload();
+    }
+  }).catch((error) => {
+    console.error("Error fetching site details:", error);
+    alert("An error occurred. Redirecting to main destination...");
+    window.location.hash = "#mainDestination";
+    window.location.reload();
+  });
+}
+
+//func to update firestore
+export async function updateSiteInDB(destinationId, siteId, updateData) {
+  const siteRef = doc(db, "destinations", destinationId, "sites", siteId);
+
+  try {
+    await updateDoc(siteRef, updateData);
+    console.log("Site updated successfully");
+  } catch (error) {
+    console.error("Error updating site:", error);
+    alert("An error ocurred while updating the site.");
+  }
+}
+
+//DELETE DESTINATION AND DESTINATION SITE
+//func to delete destination
+export async function deleteDestination(destinationId) {
+  const destinationRef = doc(db, "destinations", destinationId);
+
+  try {
+    await deleteDoc(destinationRef);
+    console.log("Destination deleted successfully");
+  } catch(error) {
+    console.error("Error deleting destination: ", error);
+    alert("An error occurred while deleting the destination");
+  }
+}
+
+//func to delete destination site
+export async function deleteSiteInDB(destinationId, siteId) {
+  const siteRef = doc(db, "destinations" , destinationId, "sites", siteId);
+
+  try {
+    await deleteDoc(siteRef);
+    console.log("Destination site deleted successfully");
+  } catch (error) {
+    console.error("Error deleting destination site: ", error);
+    alert("An error occurred while deleting the destination site.");
+  }
 }

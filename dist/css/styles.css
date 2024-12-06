@@ -349,7 +349,7 @@ nav .links a {
   justify-content: space-evenly;
   border: none;
   width: 320px;
-  margin: 65px auto 0 auto;
+  margin: 55px auto 0 auto;
   background-color: transparent;
   position: absolute;
 }
@@ -372,7 +372,7 @@ nav .links a {
   color: #5B260E;
 }
 
-#loginSignupModal, #confirmDeleteModal, #deleteDesDoneModal, #deleteSiteDoneModal, #confirmLogoutModal {
+#loginSignupModal, #confirmDeleteModal, #confirmDeleteSiteModal, #deleteDesDoneModal, #deleteSiteDoneModal, #confirmLogoutModal {
   display: none;
 }
 
@@ -418,7 +418,7 @@ nav .links a {
   align-items: center;
   justify-content: space-evenly;
 }
-.lsModal .ls-cc-modal-content .modal-buttons #proceed-btn, .lsModal .ls-cc-modal-content .modal-buttons #cancel-delete-btn {
+.lsModal .ls-cc-modal-content .modal-buttons #proceed-btn, .lsModal .ls-cc-modal-content .modal-buttons #cancel-delete-btn, .lsModal .ls-cc-modal-content .modal-buttons #cancel-delete-site-btn {
   cursor: pointer;
   font-size: 18px;
   font-family: QuicksandRegular;
@@ -430,7 +430,7 @@ nav .links a {
   background-color: transparent;
   border-bottom: 2px solid #5F6343;
 }
-.lsModal .ls-cc-modal-content .modal-buttons #cancel-btn, .lsModal .ls-cc-modal-content .modal-buttons #confirm-delete-btn {
+.lsModal .ls-cc-modal-content .modal-buttons #cancel-btn, .lsModal .ls-cc-modal-content .modal-buttons #confirm-delete-btn, .lsModal .ls-cc-modal-content .modal-buttons #confirm-delete-site-btn {
   cursor: pointer;
   font-size: 18px;
   font-family: QuicksandRegular;
@@ -476,7 +476,7 @@ nav .links a {
   align-items: center;
   justify-content: space-evenly;
 }
-.lsModal .des-main-modal-content .modal-buttons #delete-ok-btn {
+.lsModal .des-main-modal-content .modal-buttons #delete-ok-btn, .lsModal .des-main-modal-content .modal-buttons #delete-site-ok-btn {
   cursor: pointer;
   font-size: 18px;
   font-family: QuicksandRegular;
