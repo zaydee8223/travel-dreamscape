@@ -279,11 +279,11 @@ nav .links a {
 }
 
 .dash-main-des {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 100px;
-  justify-content: center;
+  display: grid;
+  grid-gap: 100px;
   margin-top: 60px;
+  justify-content: center;
+  grid-template-columns: repeat(3, 320px);
 }
 .dash-main-des .dash-add-des {
   width: 320px;
@@ -302,16 +302,12 @@ nav .links a {
   color: #523E25;
 }
 .dash-main-des .destinations {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 150px;
-  margin-bottom: 50px;
-  padding: 10px;
-  justify-content: center;
+  display: contents;
 }
 .dash-main-des .destinations .dash-main-des-box {
   width: 320px;
   height: 460px;
+  margin-bottom: 50px;
   border-radius: 23px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -349,10 +345,9 @@ nav .links a {
   justify-content: space-evenly;
   border: none;
   width: 320px;
-  margin: 0 auto;
+  margin: 65px auto 0 auto;
   background-color: transparent;
   position: absolute;
-  bottom: 240px;
 }
 .dash-main-des .destinations .dash-main-des-option-box #view-main-des-btn {
   border: none;

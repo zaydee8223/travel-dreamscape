@@ -19,11 +19,11 @@
 }
 //all destinations
 .dash-main-des{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 100px;
-    justify-content: center;
+    display: grid;
+    grid-gap: 100px;
     margin-top: 60px;
+    justify-content: center;
+    grid-template-columns: repeat(3, 320px);
     
 //add destination button
 .dash-add-des{
@@ -47,17 +47,13 @@
 
     
 .destinations {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 150px;
-    margin-bottom: 50px;
-    padding: 10px;
-    justify-content: center;
+    display: contents;
 
     //box for one destination
     .dash-main-des-box{
         width: 320px;
         height: 460px;
+        margin-bottom: 50px;
         border-radius: 23px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
        
@@ -108,11 +104,9 @@
             justify-content: space-evenly;
             border: none;
             width: 320px;
-            margin: 0 auto;
+            margin: 65px auto 0 auto;
             background-color: transparent;
             position: absolute;
-            bottom: 240px;
-   
 
                 //view btn
                 #view-main-des-btn{

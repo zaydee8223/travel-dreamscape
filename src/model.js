@@ -862,6 +862,7 @@ export async function updateSiteInDB(destinationId, siteId, updateData) {
 }
 
 //DELETE DESTINATION AND DESTINATION SITE
+
 //func to delete destination
 export async function deleteDestination(destinationId) {
   const destinationRef = doc(db, "destinations", destinationId);
