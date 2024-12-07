@@ -230,7 +230,7 @@ export function getPageContent(pageID) {
            <!-- text box - title of page -->
             <p class="add-des-site-title">Add a Destination Site</p>
             <!-- text box - page description -->
-             <p class="add-des-site-descrip">Time to explore (Destination Name)! Add the sites you want to visit and start mapping out your adventure.</p>
+             <p class="add-des-site-descrip">Time to explore! Add the sites you want to visit and start mapping out your adventure.</p>
              <!-- form holder parent -->
               <div class="add-des-site-form-parent">
                 <div class="add-des-site-inputs">
