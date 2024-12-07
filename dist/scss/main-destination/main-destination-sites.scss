@@ -1,7 +1,8 @@
 //itinerary section
 //title of the section
 .main-des-itin{
-    width: 495px;
+    width: 100%;
+    max-width: 495px;
     color: $black;
     font-size: 22px;
     margin-left: 200px;
@@ -10,7 +11,8 @@
 
 //stat of intienerary text
 .main-des-itin-stat{
-    width: 557px;
+    width: 100%;
+    max-width: 700px;
     color: $black;
     font-size: 18px;
     margin-top: 20px;
@@ -105,6 +107,95 @@
                 color: $delete-cancel-btn;
             }
         }
+    }
+}
+}
+
+// MEDIA QUERIES
+@media (max-width: 1024px) {
+    .main-des-itin, .main-des-itin-stat {
+        width: 90%; 
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .main-des-itin {
+        font-size: 20px;
+    }
+
+    .main-des-itin-stat {
+        font-size: 16px;
+    }
+
+    .main-des-stops {
+        width: 90%;
+        margin: 50px auto 0 200px;
+        grid-template-columns: repeat(3, 183px); 
+        gap: 30px;
+  
+
+    #main-add-site {
+        font-size: 16px;
+        height: 55px;
+    }
+
+    .main-des-site-box {
+        width: 183px;
+        height: auto;
+    }
+    }
+}
+
+@media (max-width: 768px) {
+    .main-des-itin {
+        font-size: 18px;
+    }
+
+    .main-des-itin-stat {
+        font-size: 14px;
+    }
+
+    .main-des-stops {
+        grid-template-columns: repeat(1, 1fr); 
+        gap: 20px;
+        margin: 40px auto 0 auto;
+
+        .main-des-site-box {
+            width: 100%;
+            border: 2px solid $black;
+        }
+    
+        .main-des-site-title {
+            font-size: 16px;
+        }
+    
+        .main-des-site-opt-box {
+            font-size: 12px;
+        }
+    }
+
+}
+
+@media (max-width: 480px) {
+    .main-des-itin, .main-des-itin-stat {
+        font-size: 14px;
+    }
+
+    .main-des-stops {
+        grid-template-columns: 1fr;
+
+    #main-add-site {
+        font-size: 12px;
+        height: 45px;
+    }
+
+    .main-des-site-title {
+        font-size: 14px;
+    }
+
+    .main-des-site-opt-box {
+        font-size: 11px;
     }
 }
 }

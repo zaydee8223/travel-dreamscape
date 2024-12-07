@@ -1019,7 +1019,8 @@ nav .links a {
 }
 
 .main-des-itin {
-  width: 495px;
+  width: 100%;
+  max-width: 495px;
   color: #000;
   font-size: 22px;
   margin-left: 200px;
@@ -1027,7 +1028,8 @@ nav .links a {
 }
 
 .main-des-itin-stat {
-  width: 557px;
+  width: 100%;
+  max-width: 700px;
   color: #000;
   font-size: 18px;
   margin-top: 20px;
@@ -1107,6 +1109,75 @@ nav .links a {
   color: #5B260E;
 }
 
+@media (max-width: 1024px) {
+  .main-des-itin, .main-des-itin-stat {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .main-des-itin {
+    font-size: 20px;
+  }
+  .main-des-itin-stat {
+    font-size: 16px;
+  }
+  .main-des-stops {
+    width: 90%;
+    margin: 50px auto 0 200px;
+    grid-template-columns: repeat(3, 183px);
+    gap: 30px;
+  }
+  .main-des-stops #main-add-site {
+    font-size: 16px;
+    height: 55px;
+  }
+  .main-des-stops .main-des-site-box {
+    width: 183px;
+    height: auto;
+  }
+}
+@media (max-width: 768px) {
+  .main-des-itin {
+    font-size: 18px;
+  }
+  .main-des-itin-stat {
+    font-size: 14px;
+  }
+  .main-des-stops {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    margin: 40px auto 0 auto;
+  }
+  .main-des-stops .main-des-site-box {
+    width: 100%;
+    border: 2px solid #000;
+  }
+  .main-des-stops .main-des-site-title {
+    font-size: 16px;
+  }
+  .main-des-stops .main-des-site-opt-box {
+    font-size: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .main-des-itin, .main-des-itin-stat {
+    font-size: 14px;
+  }
+  .main-des-stops {
+    grid-template-columns: 1fr;
+  }
+  .main-des-stops #main-add-site {
+    font-size: 12px;
+    height: 45px;
+  }
+  .main-des-stops .main-des-site-title {
+    font-size: 14px;
+  }
+  .main-des-stops .main-des-site-opt-box {
+    font-size: 11px;
+  }
+}
 .modal {
   top: 0;
   right: 0;
