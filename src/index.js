@@ -112,7 +112,6 @@ $("#confirm-logout-btn").on("click", () => {
     window.location.hash = "#home";
 });
 
-
 //clicking the dashboard link on navigation
 $("#dashboard-link").on("click", () => {
     //go to dashboard
@@ -529,8 +528,6 @@ $(".destination-sites").on("click", "#main-des-site-view", function () {
   
     //remove the siteId since we've finished deleting
     localStorage.removeItem("currentSiteId");
-
-    window.location.reload();
   });
 
   //clicking delete on the modal details in destination site
@@ -548,9 +545,6 @@ $(".destination-sites").on("click", "#main-des-site-view", function () {
 
     //show the existing confirmation modal
     $("#confirmDeleteSiteModal").fadeIn();
-
-    
-
   });
 }
 

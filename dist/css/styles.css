@@ -763,7 +763,7 @@ nav .links a {
 
 .main-des-stops {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 183px);
   gap: 50px;
   justify-items: center;
   align-items: center;
@@ -772,16 +772,14 @@ nav .links a {
   margin-top: 20px;
 }
 .main-des-stops .main-add-des-stop-btn {
-  grid-column: span 1;
-  width: 100%;
+  width: 183px;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
 }
 .main-des-stops .main-add-des-stop-btn #main-add-site {
   width: 183px;
   height: 60px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   border: none;
   cursor: pointer;
   font-size: 18px;
@@ -791,40 +789,44 @@ nav .links a {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   background-color: #7988A7;
 }
-.main-des-stops .main-des-site-box {
+.main-des-stops .destination-sites {
+  display: contents;
+}
+.main-des-stops .destination-sites .main-des-site-box {
   width: 183px;
   height: 60px;
   background-color: #fff;
   border-radius: 10px;
   border: 2px solid #000;
+  margin-bottom: 50px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.main-des-stops .main-des-site-box .main-des-site-title {
+.main-des-stops .destination-sites .main-des-site-box .main-des-site-title {
   font-size: 18px;
   color: #000;
   text-align: center;
   font-family: NotoSerifRegular;
 }
-.main-des-stops .main-des-site-box .main-des-site-opt-box {
+.main-des-stops .destination-sites .main-des-site-box .main-des-site-opt-box {
   display: flex;
   align-items: center;
   font-size: 13px;
   font-family: QuicksandRegular;
   justify-content: space-evenly;
 }
-.main-des-stops .main-des-site-box .main-des-site-opt-box #main-des-site-view {
+.main-des-stops .destination-sites .main-des-site-box .main-des-site-opt-box #main-des-site-view {
   border: none;
   cursor: pointer;
   background-color: transparent;
   color: #5F6343;
 }
-.main-des-stops .main-des-site-box .main-des-site-opt-box #main-des-site-edit {
+.main-des-stops .destination-sites .main-des-site-box .main-des-site-opt-box #main-des-site-edit {
   border: none;
   cursor: pointer;
   background-color: transparent;
   color: #B58249;
 }
-.main-des-stops .main-des-site-box .main-des-site-opt-box #main-des-site-delete {
+.main-des-stops .destination-sites .main-des-site-box .main-des-site-opt-box #main-des-site-delete {
   border: none;
   cursor: pointer;
   background-color: transparent;

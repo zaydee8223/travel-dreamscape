@@ -21,27 +21,25 @@
 //holder for all btns in itinerary
 .main-des-stops{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 183px);
     gap: 50px; 
     justify-items: center; 
     align-items: center;
     width: 70%;
     margin-left: 200px;
-    margin-top: 20px;
+   margin-top: 20px;
 
     //add a site button
     .main-add-des-stop-btn{
-        grid-column: span 1; 
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
+    width: 183px;
+    display: flex;
+    justify-content: center;
         
         //add site btn
         #main-add-site{
             width: 183px;
             height: 60px;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
             border: none;
             cursor: pointer;
             font-size: 18px;
@@ -53,6 +51,10 @@
         }
     }
 
+    //destination sites container 
+    .destination-sites {
+        display: contents;
+
     //sites added 
     .main-des-site-box{
         width: 183px;
@@ -60,6 +62,7 @@
         background-color: $white;
         border-radius: 10px;
         border: 2px solid $black;
+        margin-bottom: 50px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
 
@@ -103,4 +106,5 @@
             }
         }
     }
+}
 }
