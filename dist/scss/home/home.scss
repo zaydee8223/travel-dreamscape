@@ -54,7 +54,8 @@
     //app description
     .home-descrip {
         z-index: 3;
-        width: 770px;
+        width: 90%; 
+        max-width: 770px;
         color: $white;
         margin: 0 auto;
         font-size: 20px;
@@ -97,6 +98,90 @@
         .home-start:active {
             transform: translateY(2px);
             box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+// MEDIA QUERIIES
+
+@media (max-width: 1024px) {
+    .home-hero {
+
+        h1 {
+            font-size: 50px;
+            padding-top: 80px;
+        }
+
+        .home-slogan {
+            font-size: 22px;
+            margin-bottom: 120px;
+        }
+
+        .home-descrip {
+            font-size: 18px;
+        }
+
+        .home-start {
+            a {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .home-hero {
+       
+        h1 {
+        font-size: 40px;
+        padding-top: 60px;
+        }
+
+        .home-slogan {
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 100px;
+        }
+
+        .home-descrip {
+            font-size: 16px;
+            width: 95%;
+        }
+
+        .home-start {
+            width: 250px;
+
+            a {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .home-hero {
+        h1 {
+            font-size: 30px;
+            padding-top: 40px;
+        }
+
+        .home-slogan {
+            font-size: 16px;
+            margin-bottom: 80px;
+        }
+
+        .home-descrip {
+            font-size: 14px;
+            line-height: 1.4;
+            width: 90%;
+        }
+
+        .home-start {
+            width: 200px;
+
+            a {
+                font-size: 12px;
+            }
         }
     }
 }
