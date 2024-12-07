@@ -1,7 +1,7 @@
 //parent for destination content
 .edit-destination-parent{
-    width: 1100px;
-    height: 650px;
+    max-width: 60%;
+    height: auto;
     padding: 50px;
     margin: 40px auto 0 auto;
     box-shadow: 0 4px 8px rgba($black, $alpha: 0.2);
@@ -18,7 +18,7 @@
 
     //description text
     .edit-destination-descrip{
-        width: 545px;
+        max-width: 545px;
         color: $black;
         font-size: 18px;
         text-align: center;
@@ -48,7 +48,8 @@
 
             //inputs 
             input {
-                width: 269px;
+                width: 100%;
+                max-width: 269px;
                 border: none;
                 outline: none;
                 display: block;
@@ -78,7 +79,8 @@
               
             //textarea
             textarea {
-                width: 269px;
+                width: 100%;
+                max-width: 269px;
                 height: 150px;
                 display: block;
                 font-size: 16px;
@@ -93,11 +95,12 @@
 
         //button
         .add-submit-btn{
-            width: 370px;
+            width: 100%;
+            max-width: 370px;
             margin: 0 auto;
 
             #edit-destination-btn{
-                width: 370px;
+                width: 100%;
                 height: 50px;
                 border: none;
                 margin-top: 10px;
@@ -113,4 +116,52 @@
     }
 }
 
+// MEDIA QUERIES
+@media (max-width: 768px){
+    .edit-destination-parent{
+        max-width: 90%;
+        padding: 20px;
+        margin: 20px auto;
 
+        .edit-destination-title{
+            font-size: 24px;
+        }
+
+        .edit-destination-descrip {
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .edit-destination-form-side-parent {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .edit-destination-inputs {
+
+                input , textarea {
+                    max-width: 100%;
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+
+                .add-submit-btn {
+                    width: 100%;
+
+                    #edit-destination-btn{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .edit-destination-title {
+        font-size: 20px;
+    }
+
+    .edit-destination-descrip {
+        font-size: 14px;
+    }
+}
