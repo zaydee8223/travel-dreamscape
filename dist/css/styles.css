@@ -217,7 +217,8 @@ nav .links a {
   color: #774230;
 }
 .login-signup-parent .login-parent .login-form .login-title {
-  width: 200px;
+  width: 100%;
+  max-width: 200px;
   font-size: 25px;
   margin: 0 auto;
   text-align: center;
@@ -231,7 +232,8 @@ nav .links a {
   font-family: QuicksandBold;
 }
 .login-signup-parent .login-parent .login-form input {
-  width: 269px;
+  width: 100%;
+  max-width: 269px;
   height: 23px;
   border: none;
   outline: none;
@@ -243,14 +245,15 @@ nav .links a {
   border-bottom: 2px solid #000;
 }
 .login-signup-parent .login-parent .login-form .login-submit-btn {
-  width: 190px;
+  width: 100%;
+  max-width: 190px;
   margin: 0 auto;
 }
 .login-signup-parent .login-parent .login-form .login-submit-btn a {
   text-decoration: none;
 }
 .login-signup-parent .login-parent .login-form .login-submit-btn a #login-submit {
-  width: 190px;
+  width: 100%;
   height: 43px;
   margin-top: 30px;
   border: none;
@@ -276,7 +279,8 @@ nav .links a {
   color: #774230;
 }
 .login-signup-parent .signup-parent .signup-form .signup-title {
-  width: 200px;
+  width: 100%;
+  max-width: 200px;
   font-size: 25px;
   margin: 0 auto;
   text-align: center;
@@ -290,7 +294,8 @@ nav .links a {
   font-family: QuicksandBold;
 }
 .login-signup-parent .signup-parent .signup-form input {
-  width: 269px;
+  width: 100%;
+  max-width: 269px;
   height: 23px;
   border: none;
   outline: none;
@@ -303,14 +308,15 @@ nav .links a {
   border-bottom: 2px solid #000;
 }
 .login-signup-parent .signup-parent .signup-form .signup-submit-btn {
-  width: 190px;
+  width: 100%;
+  max-width: 190px;
   margin: 0 auto;
 }
 .login-signup-parent .signup-parent .signup-form .signup-submit-btn a {
   text-decoration: none;
 }
 .login-signup-parent .signup-parent .signup-form .signup-submit-btn a #signup-submit {
-  width: 190px;
+  width: 100%;
   height: 43px;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -322,6 +328,59 @@ nav .links a {
   background-color: #C5948F;
 }
 
+@media (max-width: 768px) {
+  .login-signup-parent {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .login-signup-parent .login-parent, .login-signup-parent .signup-parent {
+    width: 100%;
+    max-width: 300px;
+    margin: 100px auto 15px auto;
+  }
+  .login-signup-parent .login-parent .login-title, .login-signup-parent .login-parent .signup-title, .login-signup-parent .signup-parent .login-title, .login-signup-parent .signup-parent .signup-title {
+    font-size: 20px;
+  }
+  .login-signup-parent .login-parent label, .login-signup-parent .signup-parent label {
+    font-size: 14px;
+  }
+  .login-signup-parent .login-parent input, .login-signup-parent .signup-parent input {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+  .login-signup-parent .login-parent .login-submit-btn, .login-signup-parent .login-parent .signup-submit-btn, .login-signup-parent .signup-parent .login-submit-btn, .login-signup-parent .signup-parent .signup-submit-btn {
+    max-width: 100%;
+  }
+  .login-signup-parent .login-parent .login-submit-btn #login-submit, .login-signup-parent .login-parent .login-submit-btn #signup-submit, .login-signup-parent .login-parent .signup-submit-btn #login-submit, .login-signup-parent .login-parent .signup-submit-btn #signup-submit, .login-signup-parent .signup-parent .login-submit-btn #login-submit, .login-signup-parent .signup-parent .login-submit-btn #signup-submit, .login-signup-parent .signup-parent .signup-submit-btn #login-submit, .login-signup-parent .signup-parent .signup-submit-btn #signup-submit {
+    font-size: 14px;
+    height: 40px;
+  }
+  .login-signup-parent .login-parent .redirection, .login-signup-parent .signup-parent .redirection {
+    font-size: 16px;
+  }
+  .login-signup-parent .login-parent .redirection span, .login-signup-parent .signup-parent .redirection span {
+    font-size: 14px;
+  }
+}
+@media (max-width: 480px) {
+  .login-title, .signup-title {
+    font-size: 18px;
+  }
+  input, textarea {
+    padding: 8px 15px;
+  }
+  #login-submit, #signup-submit {
+    font-size: 13px;
+    height: 38px;
+  }
+  .redirection {
+    font-size: 14px;
+  }
+  .redirection span {
+    font-size: 13px;
+  }
+}
 .dash-headers {
   padding-left: 100px;
 }
