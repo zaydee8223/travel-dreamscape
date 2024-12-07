@@ -563,6 +563,11 @@ nav .links a {
   left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .lsModal .ls-cc-modal-content {
@@ -570,10 +575,13 @@ nav .links a {
   top: 40%;
   left: 50%;
   width: 700px;
-  height: 500px;
+  max-width: 90%;
+  height: 100%;
+  max-height: 500px;
   transform: translate(-50%, -50%);
   background-color: #FFE2C2;
   padding: 20px;
+  margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -585,6 +593,7 @@ nav .links a {
 }
 .lsModal .ls-cc-modal-content .modal-descrip {
   width: 500px;
+  max-width: 90%;
   padding-top: 50px;
   padding-bottom: 100px;
   text-align: center;
@@ -628,6 +637,7 @@ nav .links a {
   top: 40%;
   left: 50%;
   width: 700px;
+  max-width: 90%;
   height: 500px;
   transform: translate(-50%, -50%);
   background-color: #78402F;
@@ -643,6 +653,7 @@ nav .links a {
 }
 .lsModal .des-main-modal-content .modal-descrip {
   width: 500px;
+  max-width: 90%;
   padding-top: 50px;
   padding-bottom: 100px;
   text-align: center;
@@ -674,6 +685,7 @@ nav .links a {
   top: 40%;
   left: 50%;
   width: 700px;
+  max-width: 90%;
   height: 500px;
   transform: translate(-50%, -50%);
   background-color: #7988A7;
@@ -689,6 +701,7 @@ nav .links a {
 }
 .lsModal .logout-complete-modal-content .modal-descrip {
   width: 500px;
+  max-width: 90%;
   padding-top: 50px;
   padding-bottom: 100px;
   text-align: center;
@@ -716,6 +729,116 @@ nav .links a {
   border-bottom: 2px solid #fff;
 }
 
+@media (max-width: 768px) {
+  .lsModal .ls-cc-modal-content,
+  .lsModal .des-main-modal-content,
+  .lsModal .logout-complete-modal-content {
+    width: 80%;
+    height: 50%;
+    padding: 15px;
+  }
+  .lsModal .ls-cc-modal-content .modal-title,
+  .lsModal .des-main-modal-content .modal-title,
+  .lsModal .logout-complete-modal-content .modal-title {
+    font-size: 30px;
+  }
+  .lsModal .ls-cc-modal-content .modal-descrip,
+  .lsModal .des-main-modal-content .modal-descrip,
+  .lsModal .logout-complete-modal-content .modal-descrip {
+    width: 100%;
+    font-size: 16px;
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+  .lsModal .ls-cc-modal-content .modal-buttons #proceed-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #cancel-delete-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #cancel-delete-site-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #cancel-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #confirm-delete-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #confirm-delete-site-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #delete-ok-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #delete-site-ok-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #confirm-logout-btn,
+  .lsModal .des-main-modal-content .modal-buttons #proceed-btn,
+  .lsModal .des-main-modal-content .modal-buttons #cancel-delete-btn,
+  .lsModal .des-main-modal-content .modal-buttons #cancel-delete-site-btn,
+  .lsModal .des-main-modal-content .modal-buttons #cancel-btn,
+  .lsModal .des-main-modal-content .modal-buttons #confirm-delete-btn,
+  .lsModal .des-main-modal-content .modal-buttons #confirm-delete-site-btn,
+  .lsModal .des-main-modal-content .modal-buttons #delete-ok-btn,
+  .lsModal .des-main-modal-content .modal-buttons #delete-site-ok-btn,
+  .lsModal .des-main-modal-content .modal-buttons #confirm-logout-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #proceed-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #cancel-delete-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #cancel-delete-site-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #cancel-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #confirm-delete-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #confirm-delete-site-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #delete-ok-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #delete-site-ok-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #confirm-logout-btn {
+    font-size: 16px;
+    width: 150px;
+  }
+}
+@media (max-width: 480px) {
+  .lsModal .ls-cc-modal-content,
+  .lsModal .des-main-modal-content,
+  .lsModal .logout-complete-modal-content {
+    width: 80%;
+    height: 50%;
+    padding: 15px;
+  }
+  .lsModal .ls-cc-modal-content .modal-title,
+  .lsModal .des-main-modal-content .modal-title,
+  .lsModal .logout-complete-modal-content .modal-title {
+    font-size: 24px;
+  }
+  .lsModal .ls-cc-modal-content .modal-descrip,
+  .lsModal .des-main-modal-content .modal-descrip,
+  .lsModal .logout-complete-modal-content .modal-descrip {
+    font-size: 14px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+  .lsModal .ls-cc-modal-content .modal-buttons,
+  .lsModal .des-main-modal-content .modal-buttons,
+  .lsModal .logout-complete-modal-content .modal-buttons {
+    flex-direction: column;
+  }
+  .lsModal .ls-cc-modal-content .modal-buttons #proceed-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #cancel-delete-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #cancel-delete-site-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #cancel-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #confirm-delete-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #confirm-delete-site-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #delete-ok-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #delete-site-ok-btn,
+  .lsModal .ls-cc-modal-content .modal-buttons #confirm-logout-btn,
+  .lsModal .des-main-modal-content .modal-buttons #proceed-btn,
+  .lsModal .des-main-modal-content .modal-buttons #cancel-delete-btn,
+  .lsModal .des-main-modal-content .modal-buttons #cancel-delete-site-btn,
+  .lsModal .des-main-modal-content .modal-buttons #cancel-btn,
+  .lsModal .des-main-modal-content .modal-buttons #confirm-delete-btn,
+  .lsModal .des-main-modal-content .modal-buttons #confirm-delete-site-btn,
+  .lsModal .des-main-modal-content .modal-buttons #delete-ok-btn,
+  .lsModal .des-main-modal-content .modal-buttons #delete-site-ok-btn,
+  .lsModal .des-main-modal-content .modal-buttons #confirm-logout-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #proceed-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #cancel-delete-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #cancel-delete-site-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #cancel-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #confirm-delete-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #confirm-delete-site-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #delete-ok-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #delete-site-ok-btn,
+  .lsModal .logout-complete-modal-content .modal-buttons #confirm-logout-btn {
+    font-size: 14px;
+    width: 140px;
+    padding: 8px 15px;
+    margin-bottom: 40px;
+  }
+}
 .add-destination-parent {
   max-width: 60%;
   height: auto;
@@ -1041,7 +1164,7 @@ nav .links a {
 }
 @media (max-width: 768px) {
   .main-des-hero {
-    max-width: 75%;
+    max-width: 80%;
     margin: 20px auto 30px auto;
   }
   .main-des-hero .main-des-name-title {
@@ -1062,7 +1185,7 @@ nav .links a {
 }
 @media (max-width: 480px) {
   .main-des-hero {
-    max-width: 65%;
+    max-width: 85%;
     margin: 20px auto 30px auto;
   }
   .main-des-hero .main-des-name-title {

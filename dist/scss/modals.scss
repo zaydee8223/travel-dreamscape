@@ -11,6 +11,11 @@
     left: 0;
     width: 100%;
     height: 100%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 1000; 
+    padding: 20px;
     background-color: rgba(0, 0, 0, 0.5); 
 
     //content inside of modal - logging in, signing up, confirm delete action
@@ -19,10 +24,13 @@
         top: 40%;
         left: 50%;
         width: 700px;
-        height: 500px;
+        max-width: 90%;
+        height: 100%;
+        max-height: 500px;
         transform: translate(-50%, -50%);
         background-color: $logsign-delconfirm-modal;
         padding: 20px;
+        margin: 0 auto;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
@@ -37,6 +45,7 @@
         //modal description
         .modal-descrip {
             width: 500px;
+            max-width: 90%;
             padding-top: 50px;
             padding-bottom: 100px;
             text-align: center;
@@ -91,6 +100,7 @@
         top: 40%;
         left: 50%;
         width: 700px;
+        max-width: 90%;
         height: 500px;
         transform: translate(-50%, -50%);
         background-color: $delete-complete-modal;
@@ -109,6 +119,7 @@
         //modal description
         .modal-descrip {
             width: 500px;
+            max-width: 90%;
             padding-top: 50px;
             padding-bottom: 100px;
             text-align: center;
@@ -149,6 +160,7 @@
         top: 40%;
         left: 50%;
         width: 700px;
+        max-width: 90%;
         height: 500px;
         transform: translate(-50%, -50%);
         background-color: $logout-complete-modal;
@@ -167,6 +179,7 @@
         //modal description
         .modal-descrip {
             width: 500px;
+            max-width: 90%;
             padding-top: 50px;
             padding-bottom: 100px;
             text-align: center;
@@ -199,4 +212,79 @@
             }
         }
     }
+}
+
+//MEDIA QUERIES
+@media (max-width: 768px) {
+    .lsModal .ls-cc-modal-content,
+    .lsModal .des-main-modal-content,
+    .lsModal .logout-complete-modal-content {
+        width: 80%;
+        height: 50%;
+        padding: 15px;
+
+        .modal-title {
+            font-size: 30px;
+        }
+
+        .modal-descrip {
+            width: 100%;
+            font-size: 16px;
+            padding-top: 30px;
+            padding-bottom: 60px;
+        }
+
+        .modal-buttons {
+       #proceed-btn, 
+       #cancel-delete-btn, 
+       #cancel-delete-site-btn,
+       #cancel-btn, 
+       #confirm-delete-btn, 
+       #confirm-delete-site-btn,
+       #delete-ok-btn, 
+       #delete-site-ok-btn,
+       #confirm-logout-btn {
+            font-size: 16px;
+            width: 150px;
+        }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+.lsModal .ls-cc-modal-content,
+.lsModal .des-main-modal-content,
+.lsModal .logout-complete-modal-content {
+    width: 80%;
+    height: 50%;
+    padding: 15px;
+
+    .modal-title {
+        font-size: 24px;
+    }
+
+    .modal-descrip {
+        font-size: 14px;
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+    #proceed-btn, 
+   #cancel-delete-btn, 
+   #cancel-delete-site-btn,
+   #cancel-btn, 
+   #confirm-delete-btn, 
+   #confirm-delete-site-btn,
+   #delete-ok-btn, 
+   #delete-site-ok-btn,
+   #confirm-logout-btn {
+        font-size: 14px;
+        width: 140px;
+        padding: 8px 15px;
+        margin-bottom: 40px;
+    }
+    }
+}
 }
